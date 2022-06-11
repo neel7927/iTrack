@@ -1,1 +1,38 @@
-// Specific CSS for your home-page
+body.homepage {
+  // some css for homepage elements
+  background: asset-url('home_page_background/stack.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  .home-page-elements {
+    margin-right: 95px;
+    margin-left: 95px;
+    margin-top: 312px;
+
+    .logo-circle {
+      opacity: 0.8;
+      width: 180px;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      border: white 2px solid;
+    }
+
+    .register-buttons {
+      margin-top: 75px;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  .tagline {
+    position: absolute;
+    top: 500px;
+    left: 25px;
+    width: 325px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: aliceblue;
+  }
+
+}
