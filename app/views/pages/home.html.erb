@@ -1,2 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<body class="homepage">
+  <div class="home-page-elements">
+    <%= image_tag "logo-itrack.jpg", class: "logo-circle" %>
+    <div class="register-buttons">
+      <button type="button" class="btn btn-outline-light"><%= link_to "Log in", new_user_session_path, style: 'color:white; text-decoration: none;' %></button>
+      <button type="button" class="btn btn-outline-light"><%= link_to "Sign up", new_user_registration_path, style: 'color:white; text-decoration: none;' %></button>
+    </div>
+  </div>
+  <div class="container tagline"><em>Tell your Money where to go instead of wondering where it went.</em></div>
+</body>
