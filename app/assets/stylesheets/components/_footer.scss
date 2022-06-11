@@ -1,0 +1,24 @@
+.footer {
+  background: white;
+  display: flex;
+  align-items: center;
+  height: 0px;
+  color: white;
+  width: 35%;
+  margin-top :60px;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer-icons {
+  align-items: left;
+  background: white;
+  flex: 25%;
+  padding: 30px;
+  display: inline-block;
+  margin: 10px 15px;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
