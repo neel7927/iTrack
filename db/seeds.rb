@@ -10,10 +10,6 @@ require 'open-uri'
 require 'json'
 
 
-Transaction.destroy_all
-Category.destroy_all
-Account.destroy_all
-
 account = Account.new(
    account_name:["MCB","ABSA","SBM","AFRASIA"].sample,
    account_type: ["savings account","current account"].sample,
