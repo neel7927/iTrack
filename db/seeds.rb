@@ -5,3 +5,56 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+require 'open-uri'
+require 'json'
+
+
+Transaction.destroy_all
+Category.destroy_all
+Account.destroy_all
+User.destroy_all
+
+account = Account.new(
+   account_name:["MCB","ABSA","SBM","AFRASIA"].sample,
+   account_type: ["savings account","current account"].sample,
+   account_number:Faker::Bank.account_number(digits: 8),
+   balance: rand(10000..100000),
+   user_id: 1
+)
+puts "account created"
+account.save
+
+category_list = "db/category.json"
+category_file = File.read(category_list)
+categories = JSON.parse(category_file)
+
+transaction_list = "db/transaction.json"
+transaction_file = File.read(transaction_list)
+transactions = JSON.parse(transaction_file)
+
+puts "creating categories"
+category_count = categories["entries"].count
+i = 0
+
+category_count.times do
+  category1 = Category.create(name: "#{categories["entries"][i]["name"]}")
+  i += 1
+end
+
+puts "creating transactions"
+transaction_count = transactions["entries"].count
+i = 0
+
+transaction_count.times do
+  transaction1 = Transaction.create(
+  name: "#{transactions["entries"][i]["name"]}",
+  amount: "#{transactions["entries"][i]["amount"]}",
+  date: "#{transactions["entries"][i]["date"]}",
+  category_id: "#{transactions["entries"][i]["category_id"]}",
+  account_id: "#{transactions["entries"][i]["account_id"]}"
+  )
+  i += 1
+end
+
+puts "transaction created"
