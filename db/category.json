@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {
+      "name": "Transport"
+    },
+    {
+      "name": "Shopping"
+    },
+    {
+      "name": "Grocery"
+    },
+    {
+      "name": "Eating Out"
+    },
+    {
+      "name": "Utility bill"
+    }
+  ]
+}
