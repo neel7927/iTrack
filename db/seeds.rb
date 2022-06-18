@@ -34,6 +34,7 @@ i = 0
 
 category_count.times do
   category1 = Category.create(name: "#{categories["entries"][i]["name"]}")
+  puts "Created category"
   i += 1
 end
 
@@ -49,6 +50,9 @@ transaction_count.times do
   category_id: "#{transactions["entries"][i]["category_id"]}",
   account_id: "#{transactions["entries"][i]["account_id"]}"
   )
+  if transaction1.save
+    puts "Created transaction"
+  end
   i += 1
 end
 

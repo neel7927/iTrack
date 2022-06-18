@@ -1,0 +1,17 @@
+<h2>Overall expenses for the month of <em><%= Time.now.strftime("%B") %></em></h2>
+  <% expenses = 0 %>
+  <% @monthly_transactions.each do |transaction| %>
+  <% expenses += transaction.amount %>
+  <% end %>
+<p><%= expenses %></p>
+
+<% @categories.each do |category| %>
+  <h3><%= category.name %></h3>
+  <% expenses_per_category = 0 %>
+  <% @transactions.each do |transaction|  %>
+    <% if transaction.category_id == category.id %>
+      <% expenses_per_category += transaction.amount %>
+    <% end %>
+  <% end %>
+  <p><%= expenses_per_category %></p>
+<% end %>
