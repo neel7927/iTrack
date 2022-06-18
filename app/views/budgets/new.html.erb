@@ -1,0 +1,20 @@
+<% @account = Account.find(params[:account_id]) %>
+<h2>Budget</h2>
+
+<div class = "amount">
+   <h3 class = "how">How much?</h3>
+   <h3 class = "price">Rs: 0</h3>
+</div>
+
+<div class = form>
+  <div class = "budget-form">
+    <%= simple_form_for [@account,@budget] do |f| %>
+      <%= f.input :amount, label: "Amount", input_html: { class: "input" }, class: "input_amount"%>
+      <%= f.input :category, collection: ["Transport","Shopping","Grocery","Eating Out","Utility Bill"], label: "Category" %>
+      <div class = "button-submit">
+        <%= f.submit "Add", class: "btn btn-secondary btn-lg btn-block" %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

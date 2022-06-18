@@ -1,0 +1,65 @@
+.amount {
+  background-color: transparent;
+  // height: 20vh;
+  margin-top: 10%;
+  padding-left: 5%;
+}
+
+.form {
+  height: 66vh;
+  background-color: white;
+  border-radius: 5%;
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 0%;
+  padding-left: 0%;
+  margin: 0%;
+}
+
+.container {
+  margin-left: 0%;
+}
+
+.how {
+  font-family:'Inter';
+  font-size: 15px;
+  color: #B2AFAF;
+  font-weight: bolder;
+  // margin-top: 10%;
+}
+
+h2 {
+  text-align: center;
+  width: 100%;
+  margin-top: 5%;
+  font-family: 'Inter';
+  font-weight: bolder;
+  color: #000000;
+  font-size: 20px;
+}
+
+.price {
+  color: #292D32;
+  font-weight: bold;
+  font-size: 50px;
+  // margin-top: 10%;
+}
+
+.budget-form {
+  padding: 5%;
+}
+
+.input-amount {
+  border-radius: 20%;
+}
+
+.button-submit {
+  padding-top: 30%;
+  align-items: center;
+}
+
+.btn {
+  width: 337px;
+  background-color: #292D32;
+  color: #FCFCFC;
+}
