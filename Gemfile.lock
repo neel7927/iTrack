@@ -135,6 +135,8 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
+    material_icons (2.2.1)
+      railties (>= 3.2)
     matrix (0.4.2)
     method_source (1.0.0)
     mime-types (3.4.1)
@@ -254,10 +256,10 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    uri (0.11.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
+    uri (0.11.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -300,6 +302,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   json (~> 2.6.2)
   listen (~> 3.3)
+  material_icons
   open-uri (~> 0.2.0)
   pg (~> 1.1)
   pry-byebug

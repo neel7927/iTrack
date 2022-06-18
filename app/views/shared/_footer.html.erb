@@ -1,0 +1,56 @@
+<div class="footer">
+  <% if user_signed_in? %>
+
+  <div class="footer-icons">
+
+    <%= link_to root_path do %>
+      <i class="material-icons">home</i>
+    <% end %>
+
+  </div>
+
+
+
+  <div class="footer-icons">
+
+    <%= link_to accounts_path do %>
+      <i class="material-icons">account_balance_wallet</i>
+    <% end %>
+
+  </div>
+
+
+  <div class="footer-icons">
+
+    <%= link_to "#" do %>
+      <i class="material-icons">add_circle</i>
+    <% end %>
+
+  </div>
+
+
+
+  <div class="footer-icons">
+
+    <%= link_to "#" do %>
+      <i class="material-icons">search</i>
+    <% end %>
+
+  </div>
+
+
+  <div class="footer-icons">
+
+    <%= link_to "#" do %>
+      <i class="fa fa-check-circle"></i>
+    <% end %>
+
+  </div>
+
+
+        <% else %>
+          <footer hidden="hidden">
+        <% end %>
+    </div>
+
+ </div>
