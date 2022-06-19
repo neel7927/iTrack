@@ -10,9 +10,9 @@
   <div class = "budget-form">
     <%= simple_form_for [@account,@budget] do |f| %>
       <%= f.input :amount, label: "Amount", input_html: { class: "input" }, class: "input_amount"%>
-      <%= f.input :category, collection: ["Transport","Shopping","Grocery","Eating Out","Utility Bill"], label: "Category" %>
+      <%= f.input :category, collection: Category.all, label: "Category", value_method: :id %>
       <div class = "button-submit">
-        <%= f.submit "Add", class: "btn btn-secondary btn-lg btn-block" %>
+        <%= f.submit "Submit", class: "btn btn-secondary btn-lg btn-block" %>
       </div>
     <% end %>
   </div>
