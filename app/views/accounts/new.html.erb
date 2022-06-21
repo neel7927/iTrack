@@ -1,0 +1,20 @@
+
+
+
+
+<div class ="container-form" >
+
+<div class = "animation">
+   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+   <lottie-player class="lottie" src="https://assets10.lottiefiles.com/packages/lf20_f44kaxax.json"  background="transparent"  speed="1"   loop autoplay ></lottie-player>
+</div>
+
+  <div class = "form">
+    <%= simple_form_for @account do |f| %>
+      <%= f.input :account_name, label: "Bank Account Name", input_html: {class: "input"} %>
+      <%= f.input :account_number, label: "Bank Account Number", input_html: {class: "input"} %>
+      <%= f.input :account_type, collection: ["Savings Account", "Current Account"], label: "Account Type" %>
+      <%= f.submit "Submit" , class: "btn btn-secondary btn-lg btn-block" %>
+    <% end %>
+  </div>
+</div>

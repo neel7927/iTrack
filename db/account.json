@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {
+      "id": 1,
+      "account_name": "MCB",
+      "account_type": "Savings Account",
+      "account_number": 1234567,
+      "balance": 75000,
+      "user_id": 1
+    }
+  ]
+}
