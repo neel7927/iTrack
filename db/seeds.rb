@@ -81,7 +81,6 @@ i = 0
 
 category_count.times do
   category1 = Category.create(
-   id: "#{categories["entries"][i]["id"]}",
    name: "#{categories["entries"][i]["name"]}")
   i += 1
 end
@@ -92,14 +91,14 @@ transaction_count = transactions["entries"].count
 j = 0
 
 transaction_count.times do
-  transaction1 = Transaction.create(
-    id: "#{transactions["entries"][j]["id"]}",
+  transaction1 = Transaction.new(
     name: "#{transactions["entries"][j]["name"]}",
     amount: "#{transactions["entries"][j]["amount"]}",
-    date: "#{transactions["entries"][j]["date"]}",
-    category_id: "#{transactions["entries"][j]["category_id"]}",
-    account_id: "#{transactions["entries"][j]["account_id"]}"
+    date: "#{transactions["entries"][j]["date"]}"
   )
+  transaction1.account = Account.last
+  transaction1.category = Category.last
+  transaction1.save
   j += 1
 end
 
