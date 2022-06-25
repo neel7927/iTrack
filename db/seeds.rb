@@ -21,6 +21,7 @@ require 'open-uri'
 require 'json'
 
 Transaction.destroy_all
+Budget.destroy_all
 Account.destroy_all
 Category.destroy_all
 User.destroy_all
@@ -33,7 +34,7 @@ puts "Creating Users"
 user_count = users["entries"].count
 x = 0
 user_count.times do
-  user1 = User.create(id: "#{users["entries"][x]["id"]}",email: "#{users["entries"][x]["email"]}", password: "#{users["entries"][x]["password"]}")
+  user1 = User.create(email: "#{users["entries"][x]["email"]}", password: "#{users["entries"][x]["password"]}", name: "#{users["entries"][x]["name"]}")
   j = 0
   photo_count = users["entries"][x]["photo"].count
   photo_count.times do
@@ -55,14 +56,14 @@ puts "creating Accounts"
 account_count = accounts["entries"].count
 y = 0
 account_count.times do
-  account_1 = Account.create(
-    id: "#{accounts["entries"][y]["id"]}",
+  account_1 = Account.new(
     account_name: "#{accounts["entries"][y]["account_name"]}",
     account_type: "#{accounts["entries"][y]["account_type"]}",
     account_number: "#{accounts["entries"][y]["account_number"]}",
-    balance: "#{accounts["entries"][y]["balance"]}",
-    user_id: "#{accounts["entries"][y]["user_id"]}"
+    balance: "#{accounts["entries"][y]["balance"]}"
   )
+  account_1.user = User.first
+  account_1.save
   y += 1
 end
 puts "Account created"
