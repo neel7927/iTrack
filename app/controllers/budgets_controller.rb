@@ -1,5 +1,9 @@
 class BudgetsController < ApplicationController
 
+  def index
+    @budgets = Budget.all
+  end
+
   def new
     @budget = Budget.new
   end
@@ -11,9 +15,9 @@ class BudgetsController < ApplicationController
     @category = Category.find(params['budget']['category'].to_i)
     @budget.category = @category
     if @budget.save
-      redirect_to accounts_path
+      redirect_to account_budgets_path
     else
-       render :new
+      render :new
     end
   end
 

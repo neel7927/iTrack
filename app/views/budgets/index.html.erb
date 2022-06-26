@@ -1,0 +1,15 @@
+<h1 class = "header-category">Budget details</h1>
+
+<% @budgets.each do |budget|%>
+  <div class = "category-container">
+      <div class="category-details">
+          <div class="category-budget">
+            <h3 class = "category-name"><%= budget.category.name %></h1>
+            <h3 class = "category-budget-amount">Rs.<%= budget.amount.round() %></h1>
+          </div>
+          <div id="myProgress">
+          <div id="myBar"></div>
+          </div>
+      </div>
+  </div>
+<% end %>
