@@ -1,8 +1,8 @@
 <div class ="balance">
   <div class ="Account-Balance" >
   <h3>Balance</h3>
-  <h1 class ="amount">Rs: 1000</h1>
-  <h4 class = "account-name">John Doe</h4>
+  <h1 class ="amount"> <%= current_user.account.account_number %> </h1>
+  <h4 class = "account-name"> <%= current_user.name %> </h4>
   </div>
 </div>
 
@@ -16,7 +16,7 @@
     <div class="image-box">
       <%= image_tag("income.png",width: 30, height: 30)%>
     </div>
-    <div  class = "income">Income</div>
+    <div class = "income">Income</div>
     <div class = "amount-transact">+ $700</div>
   </div>
 </div>
