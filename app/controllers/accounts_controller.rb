@@ -6,14 +6,16 @@ class AccountsController < ApplicationController
   end
 
   def show
-    # obtain all transactions done by this account
-    @transactions = Transaction.where("account_id = #{@account.id}")
-    @monthly_transactions = monthly_transactions(@transactions)
+    @transactions = Transaction.where("account_id = #{@account.id}") # obtain all transactions done by this account
     @categories = Category.all
-    @category_names = category_names(@categories)
-    @expenses_per_category = expenses_per_category(@monthly_transactions, @categories)
+    @budgets = Budget.where("account_id = #{@account.id}")
+
+    @monthly_transactions = monthly_transactions(@transactions) # obtain transactions this month
     @total_expenses = total_expenses(@monthly_transactions)
-    @data_keys = ["Transport", "Shopping", "Grocery", "Eating Out", "Utility bill"]
+    @features = category_features(@categories, @monthly_transactions, @budgets)
+    @category_names = category_names(@features)
+    @category_amounts = category_amounts(@features)
+    @category_budgets = category_budgets(@features)
   end
 
   def new
@@ -49,33 +51,53 @@ class AccountsController < ApplicationController
   def total_expenses(transactions)
     sum = 0
     transactions.each do |transaction|
-      sum += transaction.amount
+      sum += transaction.amount unless transaction.category_id == 6
     end
     sum
   end
 
-  def category_names(categories)
-    category_names = []
+  def category_features(categories, transactions, budgets)
+    category_features = []
     categories.each do |category|
-      unless category.name == "Income"
-        category_names << category.name
+      categories_amount = 0
+      transactions.each do |transaction|
+        if transaction.category_id == category.id
+          categories_amount += transaction.amount
+        end
       end
+      budgets.each do |budget|
+        if budget.category_id == category.id
+          category_features << { name: category.name, amount: categories_amount, budget: budget.amount }
+        else
+          category_features << { name: category.name, amount: categories_amount }
+        end
+      end
+    end
+    category_features
+  end
+
+  def category_names(features)
+    category_names = []
+    features.each do |feature|
+      category_names << feature[:name]
     end
     category_names
   end
 
-  def expenses_per_category(transactions, categories)
-    expenses_per_category = []
-    categories.each do |category|
-      category_expense = 0
-      transactions.each do |transaction|
-        if (transaction.category_id == category.id) && (category.name != "Income")
-          category_expense += transaction.amount
-        end
-      end
-      expenses_per_category << category_expense
+  def category_amounts(features)
+    category_amounts = []
+    features.each do |feature|
+      category_amounts << feature[:amount]
     end
-    expenses_per_category
+    category_amounts
+  end
+
+  def category_budgets(features)
+    category_budgets = []
+    features.each do |feature|
+      category_budgets << feature[:budget]
+    end
+    category_budgets
   end
 
 end

@@ -1,11 +1,11 @@
-<div class="main-card">
+<div class="balance-card">
   <div class="account-balance">
     <h2>Account Balance</h2>
     <p><%= @account.balance %></p>
   </div>
   <div class="breakdown">
     <h2>Breakdown of expenses for the month of <em><%= Time.now.strftime("%B") %></em> per category</h2>
-    <canvas id="totalExpensesChart" data-controller="chart-js" data-labels="<%= @data_keys %>" data-data="<%= @expenses_per_category %>" data-text="<%= @total_expenses %>" width="400" height="400"></canvas>
+    <canvas id="totalExpensesChart" data-controller="chart-js" data-labels="<%= @category_names %>" data-data="<%= @category_amounts %>" width="400" height="400"></canvas>
   </div>
 </div>
 
@@ -13,21 +13,45 @@
   <div class="income-expense-tab">
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Income</button>
+        <button class="nav-link active" id="pills-income-tab" data-bs-toggle="pill" data-bs-target="#pills-income" type="button" role="tab" aria-controls="pills-income" aria-selected="true">Income</button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Expense</button>
+        <button class="nav-link" id="pills-expense-tab" data-bs-toggle="pill" data-bs-target="#pills-expense" type="button" role="tab" aria-controls="pills-expense" aria-selected="false">Expense</button>
       </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
-      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+      <div class="tab-pane fade show active" id="pills-income" role="tabpanel" aria-labelledby="pills-income-tab" tabindex="0">
         <div class="progress-card">
           track income here
         </div>
       </div>
-      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+      <div class="tab-pane fade" id="pills-expense" role="tabpanel" aria-labelledby="pills-expense-tab" tabindex="0">
         <div class="progress-card">
-          track expenses here
+          <% @features.each do |feature| %>
+            <% if feature.key?(:budget) %>
+              <div class="category-descriptive">
+                <div class="category-logo">
+                  <% case feature[:name] %>
+                  <% when "Transport" %>
+                    <%= image_tag "category/icons8-car-40.png" %>
+                  <% when "Shopping" %>
+                    <%= image_tag "category/icons8-shop-40.png" %>
+                  <% when "Grocery" %>
+                    <%= image_tag "category/icons8-vegetarian-food-40.png" %>
+                  <% when "Eating Out" %>
+                    <%= image_tag "category/icons8-food-40.png" %>
+                  <% when "Utility bill" %>
+                    <%= image_tag "category/icons8-lightning-bolt-40.png" %>
+                  <% end %>
+                </div>
+                <h3><%= feature[:name] %></h3>
+                <p><%= feature[:budget] %>/day</p>
+              </div>
+              <div class="progress" style="height: 20px;">
+                <div class="progress-bar" role="progressbar" style="width: <%= ((feature[:amount]/feature[:budget])*100).to_i %>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" data-controller="progress-bar"><%= ((feature[:amount]/feature[:budget])*100).to_i %>%</div>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>

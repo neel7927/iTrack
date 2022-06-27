@@ -22,18 +22,6 @@ export default class extends Controller {
           hoverOffset: 4
         }]
       },
-      options: {
-        elements: {
-          center: {
-            text: `${JSON.parse(ctx.canvas.dataset.text)}`,
-            color: 'rgb(255, 99, 132)', // Default is #000000
-            fontStyle: 'Arial', // Default is Arial
-            sidePadding: 20, // Default is 20 (as a percentage)
-            minFontSize: 20, // Default is 20 (in px), set to false and text will not wrap.
-            lineHeight: 25 // Default is 25 (in px), used for when text wraps
-          }
-        }
-      }
     });
   }
 }
