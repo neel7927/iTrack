@@ -71,7 +71,7 @@ class AccountsController < ApplicationController
         else
           category_budget = 0
         end
-        category_features << { name: category.name, amount: categories_amount, budget: budget.amount }
+        category_features << { name: category.name, amount: categories_amount, budget: category_budget }
       end
     end
     category_features
