@@ -34,15 +34,16 @@ puts "Creating Users"
 user_count = users["entries"].count
 x = 0
 user_count.times do
-  user1 = User.create(email: "#{users["entries"][x]["email"]}", password: "#{users["entries"][x]["password"]}", name: "#{users["entries"][x]["name"]}")
+user1 = User.create(email: "#{users["entries"][x]["email"]}", password: "#{users["entries"][x]["password"]}", name: "#{users["entries"][x]["name"]}")
+
   j = 0
   photo_count = users["entries"][x]["photo"].count
   photo_count.times do
   photo = users["entries"][x]["photo"][j]
   file = URI.open("#{photo}")
-  user1.photo.attach(io: file, filename: "user.jpg",content_type: 'image/jpg')
+  user1.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
   j += 1
-end
+  end
   x += 1
 end
 
