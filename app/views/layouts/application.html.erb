@@ -10,6 +10,8 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js@2.9.1/dist/Chart.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.1/dist/Chart.min.js"></script>
   </head>
 
   <body>
@@ -40,7 +42,7 @@
 
         <%= yield %>
       </div>
-    <% end %>
     <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>

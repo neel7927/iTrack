@@ -81,8 +81,10 @@ category_count = categories["entries"].count
 i = 0
 
 category_count.times do
+
   category1 = Category.create(
    name: "#{categories["entries"][i]["name"]}")
+
   i += 1
 end
 puts "Categories created"
@@ -97,10 +99,12 @@ transaction_count.times do
     amount: "#{transactions["entries"][j]["amount"]}",
     date: "#{transactions["entries"][j]["date"]}"
   )
+
   transaction1.account = Account.last
   transaction1.category = Category.last
   transaction1.save
   j += 1
+
 end
 
 puts "transaction created"
