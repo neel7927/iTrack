@@ -21,6 +21,7 @@ require 'open-uri'
 require 'json'
 
 Transaction.destroy_all
+Budget.destroy_all
 Account.destroy_all
 Category.destroy_all
 User.destroy_all
@@ -33,15 +34,16 @@ puts "Creating Users"
 user_count = users["entries"].count
 x = 0
 user_count.times do
-  user1 = User.create(id: "#{users["entries"][x]["id"]}",email: "#{users["entries"][x]["email"]}", password: "#{users["entries"][x]["password"]}")
+user1 = User.create(email: "#{users["entries"][x]["email"]}", password: "#{users["entries"][x]["password"]}", name: "#{users["entries"][x]["name"]}")
+
   j = 0
   photo_count = users["entries"][x]["photo"].count
   photo_count.times do
   photo = users["entries"][x]["photo"][j]
   file = URI.open("#{photo}")
-  user1.photo.attach(io: file, filename: "user.jpg",content_type: 'image/jpg')
+  user1.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
   j += 1
-end
+  end
   x += 1
 end
 
@@ -55,14 +57,14 @@ puts "creating Accounts"
 account_count = accounts["entries"].count
 y = 0
 account_count.times do
-  account_1 = Account.create(
-    id: "#{accounts["entries"][y]["id"]}",
+  account_1 = Account.new(
     account_name: "#{accounts["entries"][y]["account_name"]}",
     account_type: "#{accounts["entries"][y]["account_type"]}",
     account_number: "#{accounts["entries"][y]["account_number"]}",
-    balance: "#{accounts["entries"][y]["balance"]}",
-    user_id: "#{accounts["entries"][y]["user_id"]}"
+    balance: "#{accounts["entries"][y]["balance"]}"
   )
+  account_1.user = User.first
+  account_1.save
   y += 1
 end
 puts "Account created"
@@ -79,8 +81,10 @@ category_count = categories["entries"].count
 i = 0
 
 category_count.times do
-  category1 = Category.create(name: "#{categories["entries"][i]["name"]}")
-  puts "Created category"
+
+  category1 = Category.create(
+   name: "#{categories["entries"][i]["name"]}")
+
   i += 1
 end
 puts "Categories created"
@@ -90,18 +94,17 @@ transaction_count = transactions["entries"].count
 j = 0
 
 transaction_count.times do
-  transaction1 = Transaction.create(
-    id: "#{transactions["entries"][j]["id"]}",
+  transaction1 = Transaction.new(
     name: "#{transactions["entries"][j]["name"]}",
     amount: "#{transactions["entries"][j]["amount"]}",
-    date: "#{transactions["entries"][j]["date"]}",
-    category_id: "#{transactions["entries"][j]["category_id"]}",
-    account_id: "#{transactions["entries"][j]["account_id"]}"
+    date: "#{transactions["entries"][j]["date"]}"
   )
-  if transaction1.save
-    puts "Created transaction"
-  end
-  i += 1
+
+  transaction1.account = Account.last
+  transaction1.category = Category.last
+  transaction1.save
+  j += 1
+
 end
 
 puts "transaction created"
