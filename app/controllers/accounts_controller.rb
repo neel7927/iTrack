@@ -67,10 +67,11 @@ class AccountsController < ApplicationController
       end
       budgets.each do |budget|
         if budget.category_id == category.id
-          category_features << { name: category.name, amount: categories_amount, budget: budget.amount }
+          category_budget = budget.amount
         else
-          category_features << { name: category.name, amount: categories_amount }
+          category_budget = 0
         end
+        category_features << { name: category.name, amount: categories_amount, budget: budget.amount }
       end
     end
     category_features
