@@ -262,7 +262,6 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     uri (0.11.0)
-    w3css_rails (4.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -321,7 +320,6 @@ DEPENDENCIES
   spring
   turbolinks (~> 5)
   tzinfo-data
-  w3css_rails
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
@@ -330,4 +328,4 @@ RUBY VERSION
    ruby 3.0.3p157
 
 BUNDLED WITH
-   2.3.14
+   2.3.5

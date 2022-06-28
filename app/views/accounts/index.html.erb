@@ -19,15 +19,36 @@
 
 <div class = "transaction">
   <h3 class = "transac">Transactions</h3>
-  <h3 class= "details">View Details</h3>
 </div>
 
-<div class = "transaction-history">
-  <div class = "transac-hist">
-    <div class="image-box">
-      <%= image_tag("income.png",width: 30, height: 30)%>
-    </div>
-    <div class = "income">Income</div>
-    <div class = "amount-transact">+ $700</div>
-  </div>
-</div>
+<% @account = Account.find(current_user.account.id) %>
+<% @transactions.each do |transaction| %>
+ <% @transaction = transaction.id %>
+ <% link_to edit_account_transaction_path(@account,@transaction) do %>
+      <div class = "transaction-history">
+        <div class = "transac-hist">
+          <div class="image-box">
+            <% case transaction.category.name %>
+                        <% when "Transport" %>
+                          <%= image_tag "category/icons8-car-40.png" %>
+                        <% when "Shopping" %>
+                          <%= image_tag "category/icons8-shop-40.png" %>
+                        <% when "Grocery" %>
+                          <%= image_tag "category/icons8-vegetarian-food-40.png" %>
+                        <% when "Eating Out" %>
+                          <%= image_tag "category/icons8-food-40.png" %>
+                        <% when "Utility bill" %>
+                          <%= image_tag "category/icons8-lightning-bolt-40.png" %>
+                        <% when "Income" %>
+                          <%= image_tag("income.png",width: 30, height: 30) %>
+              <% end %>
+          </div>
+          <div class = "income"><%= transaction.name %></div>
+          <div class = "amount-transact">Rs. <%= transaction.amount.round() %></div>
+        </div>
+        <div class="category-check">
+          <div class="cat-name"><%= transaction.category.name %></div>
+        </div>
+      </div>
+  <% end %>
+<% end %>
