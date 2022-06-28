@@ -20,14 +20,6 @@
   </div>
 
 
-  <div class="footer-icons">
-     <% @account = Account.find(1) %>
-    <%= link_to new_account_budget_path(@account) do %>
-      <i class="material-icons">add_circle</i>
-    <% end %>
-
-
-
 
 
 
@@ -50,7 +42,6 @@
     <div>
       <i class="material-icons" data-action="click->footer#clickdropupMenu">add_circle</i>
     </div>
-
 
 
   </div>
@@ -83,10 +74,14 @@
 
 
   <div class="footer-icons">
-    <%= link_to account_budgets_path(@account) do %>
+
+    <%= link_to "#" do %>
       <i class="fa fa-check-circle"></i>
     <% end %>
+
   </div>
+
+
         <% else %>
           <footer hidden="hidden">
         <% end %>
