@@ -21,10 +21,9 @@
   <h3 class = "transac">Transactions</h3>
 </div>
 
-<% @account = Account.find(current_user.account.id) %>
+
 <% @transactions.each do |transaction| %>
- <% @transaction = transaction.id %>
- <% link_to edit_account_transaction_path(@account,@transaction) do %>
+
       <div class = "transaction-history">
         <div class = "transac-hist">
           <div class="image-box">
@@ -46,9 +45,11 @@
           <div class = "income"><%= transaction.name %></div>
           <div class = "amount-transact">Rs. <%= transaction.amount.round() %></div>
         </div>
+        <%= link_to edit_transaction_path(transaction), class: "link" do %>
         <div class="category-check">
           <div class="cat-name"><%= transaction.category.name %></div>
         </div>
+        <% end %>
       </div>
-  <% end %>
+
 <% end %>

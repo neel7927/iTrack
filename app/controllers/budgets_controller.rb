@@ -1,5 +1,5 @@
 class BudgetsController < ApplicationController
-
+  before_action :set_budget, only: [:edit, :update]
   def index
     @budgets = Budget.all
     @transactions = Transaction.where("account_id = #{params[:account_id]}")
@@ -29,7 +29,19 @@ class BudgetsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @budget.update(budget_params)
+    redirect_to account_budgets_path
+  end
+
   private
+
+  def set_budget
+    @budget = Budget.find(params[:id])
+  end
 
   def budget_params
     params.require(:budget).permit(:amount)
@@ -60,7 +72,7 @@ class BudgetsController < ApplicationController
       end
       budgets.each do |budget|
         if budget.category_id == category.id
-          category_features << { name: category.name, amount: categories_amount, budget: budget.amount }
+          category_features << { name: category.name, amount: categories_amount, budget: budget.amount, budget_id: budget.id }
         else
           category_features << { name: category.name, amount: categories_amount }
         end
