@@ -1,20 +1,21 @@
 <div class ="Account-Balance" >
-<div class ="Account-logo">
-  <%= image_tag "mastercard.png", width: 50 %>
-  <h3> <%= current_user.account.account_name %> </h3>
-  <%number = current_user.account.account_number.to_s.chars.each_slice(4).map { |a| a.join.to_i }%>
-</div>
+  <div class ="Account-logo">
+    <%= image_tag "mastercard.png", width: 50 %>
+    <h3> <%= current_user.account.account_name %> </h3>
+    <%number = current_user.account.account_number.to_s.chars.each_slice(4).map { |a| a.join.to_i }%>
+  </div>
 
-<div class="card-number">
+  <div class="card-number">
     <% number.each do |num| %>
       <%= num %>
       <% end %>
-</div>
+  </div>
 
-<div class="card-balance">
-<strong> Balance: Rs </strong> <%= (current_user.account.balance).floor %>
-</div>
-<h4 class = "account-name"> <%= current_user.name %> </h4>
+  <div class="card-balance">
+  <strong> Balance: Rs </strong> <%= (current_user.account.balance).floor %>
+  </div>
+  <h4 class = "account-name"> <%= current_user.name %> </h4>
+  </div>
 </div>
 
 <div class = "transaction">
