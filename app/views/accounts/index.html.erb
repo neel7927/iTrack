@@ -29,15 +29,15 @@
           <div class="image-box">
             <% case transaction.category.name %>
                         <% when "Transport" %>
-                          <%= image_tag "category/icons8-car-40.png" %>
+                          <%= image_tag("category/icons8-car-40.png",width: 30, height: 30) %>
                         <% when "Shopping" %>
-                          <%= image_tag "category/icons8-shop-40.png" %>
+                          <%= image_tag("category/icons8-shop-40.png",width: 30, height: 30) %>
                         <% when "Grocery" %>
-                          <%= image_tag "category/icons8-vegetarian-food-40.png" %>
+                          <%= image_tag("category/icons8-vegetarian-food-40.png",width: 30, height: 30) %>
                         <% when "Eating Out" %>
-                          <%= image_tag "category/icons8-food-40.png" %>
+                          <%= image_tag("category/icons8-food-40.png",width: 30, height: 30) %>
                         <% when "Utility bill" %>
-                          <%= image_tag "category/icons8-lightning-bolt-40.png" %>
+                          <%= image_tag("category/icons8-lightning-bolt-40.png",width: 30, height: 30) %>
                         <% when "Income" %>
                           <%= image_tag("income.png",width: 30, height: 30) %>
               <% end %>
