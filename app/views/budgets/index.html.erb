@@ -1,11 +1,13 @@
 <h1 class = "header-category">Budget details</h1>
-
+<% @account = Account.find(current_user.account.id) %>
 <% @features.each do |feature|%>
  <% if feature.key?(:budget)%>
   <div class = "category-container">
       <div class="category-details">
           <div class="category-budget">
+            <%= link_to edit_account_budget_path(@account,feature[:budget_id]), class: "link" do %>
             <h3 class = "category-name"><%= feature[:name] %></h1>
+            <% end %>
             <h3 class = "category-budget-amount">Rs.<%= feature[:budget].round() %></h1>
           </div>
 

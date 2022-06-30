@@ -3,6 +3,7 @@ class AccountsController < ApplicationController
 
   def index
     @accounts = Account.all
+    @transactions = Transaction.all
   end
 
   def show
