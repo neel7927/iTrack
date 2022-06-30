@@ -1,7 +1,7 @@
 <div class="footer">
-<% @account = Account.find(current_user.account.id) %>
-  <% if user_signed_in? %>
 
+  <% if user_signed_in? %>
+  <% @account = Account.find(current_user.account.id) %>
   <div class="footer-icons">
 
     <%= link_to accounts_path do %>
