@@ -12,7 +12,7 @@
   </div>
 
   <div class="card-balance">
-  <strong> Balance: Rs </strong> <%= (current_user.account.balance).floor %>
+  <strong> Balance: Rs </strong> <%= (current_user.account.balance).round() %>
   </div>
   <h4 class = "account-name"> <%= current_user.name %> </h4>
   </div>
