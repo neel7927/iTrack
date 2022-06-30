@@ -42,7 +42,9 @@
 
         <%= yield %>
       </div>
-    <%= render 'shared/footer' %>
+      <% unless request.original_fullpath == "/accounts/new" %>
+      <%= render 'shared/footer' %>
+      <% end %>
     <% end %>
   </body>
 </html>
