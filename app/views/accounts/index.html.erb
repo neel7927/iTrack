@@ -12,7 +12,9 @@
   </div>
 
   <div class="card-balance">
+  <% if current_user.account.balance.present? %>
   <strong> Balance: Rs </strong> <%= (current_user.account.balance).round() %>
+  <% end %>
   </div>
   <h4 class = "account-name"> <%= current_user.name %> </h4>
   </div>
@@ -21,7 +23,6 @@
 <div class = "transaction">
   <h3 class = "transac">Transactions</h3>
 </div>
-
 
 <% @transactions.each do |transaction| %>
 
