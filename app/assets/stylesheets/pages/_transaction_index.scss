@@ -1,14 +1,17 @@
 
 
 
-  // p{
-  //   color: blue;
-  //   font-size: 60px solid;
-  //   margin-top: 20px;
+  p{
+    color: #292D32;
+    font-size: 10px bold;
+    margin-top: 10px;
+    margin-left: 65px;
 
 
-  // }
-  // // search bar css
+  }
+
+
+  // search bar css
 
 
 
@@ -17,14 +20,15 @@
     text-align: center;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     border: 1px solid #E7E7E7;
-    margin-bottom: 15px;
+
+
   }
 
-  .form-control .btn {
-    position: absolute;
-    top: 8px;
-    bottom: 8px;
-    right: 8px;
+  .searchcenter{
+    width: 150px;
+    padding-top: 20px;
+    padding-left: 30px;
+
   }
 
   .form-control:focus {
@@ -32,6 +36,11 @@
     outline: none !important;
     box-shadow: 0 2px 6px rgba(87, 12, 226, 0.08);
   }
+
+  .btn-primary {
+    background-color: #080A0B;
+  }
+
 
 
 
@@ -142,7 +151,7 @@
 
 
   font-size: 15px;
-  color: blue;
+  color: #292D32;
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   display: flex;
@@ -183,7 +192,7 @@
   align-items: flex-start;
 
   padding-left: 88px;
-  color: orange;
+  color: #292D32;
  }
 
  .link {
