@@ -22,37 +22,13 @@
     <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-income" role="tabpanel" aria-labelledby="pills-income-tab" tabindex="0">
         <div class="progress-card">
-          track income here
+          <% @monthly_transactions.each do |transaction| %>
+
+          <% end %>
         </div>
       </div>
       <div class="tab-pane fade" id="pills-expense" role="tabpanel" aria-labelledby="pills-expense-tab" tabindex="0">
-        <div class="progress-card">
-          <% @features.each do |feature| %>
-            <% unless feature[:budget] == 0 %>
-              <div class="category-descriptive">
-                <div class="category-logo">
-                  <% case feature[:name] %>
-                  <% when "Transport" %>
-                    <%= image_tag "category/icons8-car-40.png" %>
-                  <% when "Shopping" %>
-                    <%= image_tag "category/icons8-shop-40.png" %>
-                  <% when "Grocery" %>
-                    <%= image_tag "category/icons8-vegetarian-food-40.png" %>
-                  <% when "Eating Out" %>
-                    <%= image_tag "category/icons8-food-40.png" %>
-                  <% when "Utility bill" %>
-                    <%= image_tag "category/icons8-lightning-bolt-40.png" %>
-                  <% end %>
-                </div>
-                <h3><%= feature[:name] %></h3>
-                <p><%= (feature[:budget]/Date.today.all_month.count).to_i %>/day</p>
-              </div>
-              <div class="progress" style="height: 20px;">
-                <div class="progress-bar" role="progressbar" style="width: <%= ((feature[:amount]/feature[:budget])*100).to_i %>%;" aria-valuenow="<%= ((feature[:amount]/feature[:budget])*100).to_i %>" aria-valuemin="0" aria-valuemax="100" data-controller="progress-bar"><%= ((feature[:amount]/feature[:budget])*100).to_i %>%</div>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
+
       </div>
     </div>
   </div>
