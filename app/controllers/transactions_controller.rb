@@ -8,7 +8,7 @@ class TransactionsController < ApplicationController
     else
       @transactions = Transaction.all
     end
-
+  end
 
   def edit
   end
@@ -24,5 +24,4 @@ class TransactionsController < ApplicationController
   def set_transaction
     @transaction = Transaction.find(params[:id])
   end
-end
 end
