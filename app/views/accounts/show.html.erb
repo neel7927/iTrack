@@ -1,52 +1,88 @@
 <div class="balance-card">
-  <div class="account-balance">
-    <h2>Account Balance</h2>
-    <p><%= @account.balance %></p>
-  </div>
-  <div class="breakdown">
-    <h2>Breakdown of expenses for the month of <em><%= Time.now.strftime("%B") %></em> per category</h2>
-    <canvas id="totalExpensesChart" data-controller="chart-js" data-labels="<%= @category_names %>" data-data="<%= @category_amounts %>" width="400" height="400"></canvas>
+  <div class="container">
+  <% text = ["Account Balance = #{@account.balance}"] %>
+    <div class="breakdown">
+      <h2 class="text-center">Breakdown of expenses for the month of <em><%= Time.now.strftime("%B") %></em> per category</h2>
+      <div class="chart">
+        <canvas id="totalExpensesChart" data-controller="chart-js" data-labels="<%= @category_names %>" data-data="<%= @category_amounts %>" data-text="<%= text %>"></canvas>
+      </div>
+    </div>
   </div>
 </div>
-<%= @features %>
-<div class="category-budgets">
-  <div class="income-expense-tab">
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="pills-income-tab" data-bs-toggle="pill" data-bs-target="#pills-income" type="button" role="tab" aria-controls="pills-income" aria-selected="true">Income</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-expense-tab" data-bs-toggle="pill" data-bs-target="#pills-expense" type="button" role="tab" aria-controls="pills-expense" aria-selected="false">Expense</button>
-      </li>
-    </ul>
-    <div class="tab-content" id="pills-tabContent">
-      <div class="tab-pane fade show active" id="pills-income" role="tabpanel" aria-labelledby="pills-income-tab" tabindex="0">
-        <div class="progress-card">
-          <% @monthly_transactions.each do |transaction| %>
-          <% if transaction.category.name == "Income" %>
-            <div class = "transaction-history">
-              <div class = "transac-hist">
-                <div class="image-box">
-                <div class = "transaction-date"><%= transaction.date.strftime("%a %d %b %y") %></div>
-                </div>
-                <div class = "income"><%= transaction.name %></div>
-                <div class = "amount-transact">Rs. <%= transaction.amount.round() %></div>
 
-              </div>
-              <%= link_to root_path, class: "link" do %>
-              <div class="category-check">
-                <div class="cat-name"><%= transaction.category.name %></div>
-              </div>
+
+<div class="income-expense-tab">
+  <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="pills-income-tab" data-bs-toggle="pill" data-bs-target="#pills-income" type="button" role="tab" aria-controls="pills-income" aria-selected="true">Income</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-expense-tab" data-bs-toggle="pill" data-bs-target="#pills-expense" type="button" role="tab" aria-controls="pills-expense" aria-selected="false">Expense</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-income" role="tabpanel" aria-labelledby="pills-income-tab" tabindex="0">
+      <% @monthly_transactions.each do |transaction| %>
+        <% if transaction.category.name == "Income" %>
+
+            <div class="transaction-type-card">
+              <% case transaction.category.name %>
+              <% when "Transport" %>
+                <%= image_tag("category/icons8-car-40.png") %>
+              <% when "Shopping" %>
+                <%= image_tag("category/icons8-shop-40.png") %>
+              <% when "Grocery" %>
+                <%= image_tag("category/icons8-vegetarian-food-40.png") %>
+              <% when "Eating Out" %>
+                <%= image_tag("category/icons8-food-40.png") %>
+              <% when "Utility bill" %>
+                <%= image_tag("category/icons8-lightning-bolt-40.png") %>
+              <% when "Income" %>
+                <%= image_tag("category/icons8-profit-40.png") %>
               <% end %>
+              <div class="transaction-content">
+                <p><small><%= transaction.name %></small></p>
+                <p>Rs. <strong><%= transaction.amount.round() %></strong></p>
+              </div>
+
+              <div class="transaction-actions">
+                <p><%= transaction.category.name %></p>
+              </div>
             </div>
+        <% end %>
+      <% end %>
 
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-      <div class="tab-pane fade" id="pills-expense" role="tabpanel" aria-labelledby="pills-expense-tab" tabindex="0">
+    </div>
+    <div class="tab-pane fade" id="pills-expense" role="tabpanel" aria-labelledby="pills-expense-tab" tabindex="0">
+      <% @monthly_transactions.each do |transaction| %>
+        <% unless transaction.category.name == "Income" %>
+          <div class="transaction-type-card">
+              <% case transaction.category.name %>
+              <% when "Transport" %>
+                <%= image_tag("category/icons8-car-40.png") %>
+              <% when "Shopping" %>
+                <%= image_tag("category/icons8-shop-40.png") %>
+              <% when "Grocery" %>
+                <%= image_tag("category/icons8-vegetarian-food-40.png") %>
+              <% when "Eating Out" %>
+                <%= image_tag("category/icons8-food-40.png") %>
+              <% when "Utility bill" %>
+                <%= image_tag("category/icons8-lightning-bolt-40.png") %>
+              <% when "Income" %>
+                <%= image_tag("category/icons8-profit-40.png") %>
+              <% end %>
+              <div class="transaction-content">
+                <p><small><%= transaction.name %></small></p>
+                <p>Rs. <strong><%= transaction.amount.round() %></strong></p>
+              </div>
 
-      </div>
+              <div class="transaction-actions">
+                <p><%= transaction.category.name %></p>
+              </div>
+            </div>
+        <% end %>
+      <% end %>
+
     </div>
   </div>
 </div>
