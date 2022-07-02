@@ -72,7 +72,7 @@ class AccountsController < ApplicationController
         else
           category_budget = 0
         end
-        category_features << { name: category.name, amount: categories_amount, budget: budget.amount }
+        category_features << { name: category.name, amount: categories_amount, budget: category_budget }
       end
     end
     category_features
@@ -81,7 +81,7 @@ class AccountsController < ApplicationController
   def category_names(features)
     category_names = []
     features.each do |feature|
-      category_names << feature[:name]
+      category_names << feature[:name] unless feature[:name] == "Income"
     end
     category_names
   end
@@ -89,7 +89,7 @@ class AccountsController < ApplicationController
   def category_amounts(features)
     category_amounts = []
     features.each do |feature|
-      category_amounts << feature[:amount]
+      category_amounts << feature[:amount] unless feature[:name] == "Income"
     end
     category_amounts
   end

@@ -10,9 +10,89 @@
   }
 }
 
+
+.income-expense-tab {
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
 .nav-pills .nav-link {
   color: #555;
 }
 .text-uppercase {
   letter-spacing: 0.1em;
+}
+
+.balance-card {
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 8px 0px;
+}
+
+.balance-card .breakdown {
+  margin-bottom: 24px;
+}
+
+#pills-tab {
+  display: flex;
+  justify-content: center;
+}
+
+.chart {
+  width: 250px;
+  height: 275px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.balance-card {
+  h2 {
+    font-family: 'Inter';
+    font-weight: bolder;
+    color: #000000;
+    font-size: 20px;
+  }
+
+}
+
+.transaction-type-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
+}
+
+.transaction-type-card .transaction-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.transaction-type-card p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.transaction-type-card small {
+  color: #999999;
+  font-weight: bold;
+}
+.transaction-type-card .transaction-actions {
+  opacity: 1;
+  display: flex;
+  transition: ease .3s;
+}
+
+
+.transaction-type-card .transaction-actions a {
+  color: #999999;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.transaction-type-card .transaction-actions a:hover {
+  color: #555555;
 }
