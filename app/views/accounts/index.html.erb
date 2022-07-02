@@ -22,34 +22,33 @@
 </div>
 
 
-<% @transactions.each do |transaction| %>
+  <% @transactions.first(5).each do |transaction| %>
 
-      <div class = "transaction-history">
-        <div class = "transac-hist">
-          <div class="image-box">
-            <% case transaction.category.name %>
-                        <% when "Transport" %>
-                          <%= image_tag("category/icons8-car-40.png",width: 30, height: 30) %>
-                        <% when "Shopping" %>
-                          <%= image_tag("category/icons8-shop-40.png",width: 30, height: 30) %>
-                        <% when "Grocery" %>
-                          <%= image_tag("category/icons8-vegetarian-food-40.png",width: 30, height: 30) %>
-                        <% when "Eating Out" %>
-                          <%= image_tag("category/icons8-food-40.png",width: 30, height: 30) %>
-                        <% when "Utility bill" %>
-                          <%= image_tag("category/icons8-lightning-bolt-40.png",width: 30, height: 30) %>
-                        <% when "Income" %>
-                          <%= image_tag("income.png",width: 30, height: 30) %>
-              <% end %>
+        <div class = "transaction-history">
+          <div class = "transac-hist">
+            <div class="image-box">
+              <% case transaction.category.name %>
+                          <% when "Transport" %>
+                            <%= image_tag("category/icons8-car-40.png",width: 30, height: 30) %>
+                          <% when "Shopping" %>
+                            <%= image_tag("category/icons8-shop-40.png",width: 30, height: 30) %>
+                          <% when "Grocery" %>
+                            <%= image_tag("category/icons8-vegetarian-food-40.png",width: 30, height: 30) %>
+                          <% when "Eating Out" %>
+                            <%= image_tag("category/icons8-food-40.png",width: 30, height: 30) %>
+                          <% when "Utility bill" %>
+                            <%= image_tag("category/icons8-lightning-bolt-40.png",width: 30, height: 30) %>
+                          <% when "Income" %>
+                            <%= image_tag("income.png",width: 30, height: 30) %>
+                <% end %>
+            </div>
+            <div class = "income"><%= transaction.name %></div>
+            <div class = "amount-transact">Rs. <%= transaction.amount.round() %></div>
           </div>
-          <div class = "income"><%= transaction.name %></div>
-          <div class = "amount-transact">Rs. <%= transaction.amount.round() %></div>
+          <%= link_to edit_transaction_path(transaction), class: "link" do %>
+          <div class="category-check">
+            <div class="cat-name"><%= transaction.category.name %></div>
+          </div>
+          <% end %>
         </div>
-        <%= link_to edit_transaction_path(transaction), class: "link" do %>
-        <div class="category-check">
-          <div class="cat-name"><%= transaction.category.name %></div>
-        </div>
-        <% end %>
-      </div>
-
-<% end %>
+  <% end %>

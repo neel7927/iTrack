@@ -3,17 +3,17 @@
     {
       "name": "Salary",
       "amount": 50000,
-      "date":  "2022-06-01"
+      "date":  "2022-07-01"
     },
     {
       "name": "MCB LTD Dividend",
-      "amount": 50000,
-      "date":  "2022-06-01"
+      "amount": 35800,
+      "date":  "2022-07-08"
     },
     {
       "name": "Web dev freelance",
       "amount": 20000,
-      "date":  "2022-06-01"
+      "date":  "2022-07-04"
     }
   ]
 }

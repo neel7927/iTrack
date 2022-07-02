@@ -1,25 +1,24 @@
 {
   "entries": [
-
     {
       "name": "Woolworths",
       "amount": 2500,
-      "date":  "2022-06-01"
+      "date":  "2022-07-01"
     },
     {
       "name": "Kiabi",
       "amount": 250,
-      "date":  "2022-06-01"
+      "date":  "2022-07-02"
     },
     {
       "name": "Island Haze",
       "amount": 500,
-      "date":  "2022-06-01"
+      "date":  "2022-07-05"
     },
     {
       "name": "Renaissance Shop",
       "amount": 450,
-      "date":  "2022-06-01"
+      "date":  "2022-07-04"
     }
   ]
 }

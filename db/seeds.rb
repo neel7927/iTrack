@@ -1,22 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-# account = Account.new(
-#    account_name:["MCB","ABSA","SBM","AFRASIA"].sample,
-#    account_type: ["savings account","current account"].sample,
-#    account_number:Faker::Bank.account_number(digits: 8),
-#    balance: rand(10000..100000),
-#    user_id: 2
-# )
-# puts "account created"
-# account.save
-
-require 'faker'
 require 'open-uri'
 require 'json'
 
@@ -26,7 +7,7 @@ Account.destroy_all
 Category.destroy_all
 User.destroy_all
 
-user_list = "db/user.json"
+user_list = "db/json/user.json"
 users_file = File.read(user_list)
 users = JSON.parse(users_file)
 # create users
@@ -35,19 +16,19 @@ user_count = users["entries"].count
 x = 0
 user_count.times do
 user1 = User.create(email: "#{users["entries"][x]["email"]}", password: "#{users["entries"][x]["password"]}", name: "#{users["entries"][x]["name"]}")
-  j = 0
-  photo_count = users["entries"][x]["photo"].count
-  photo_count.times do
-  photo = users["entries"][x]["photo"][j]
-  file = URI.open("#{photo}")
-  user1.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
-  j += 1
-  end
-  x += 1
+    j = 0
+    photo_count = users["entries"][x]["photo"].count
+    photo_count.times do
+    photo = users["entries"][x]["photo"][j]
+    file = URI.open("#{photo}")
+    user1.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
+    j += 1
+    end
+    x += 1
 end
 puts "Users created"
 
-account_list = "db/account.json"
+account_list = "db/json/account.json"
 accounts_file = File.read(account_list)
 accounts = JSON.parse(accounts_file)
 
@@ -55,53 +36,49 @@ puts "creating Accounts"
 account_count = accounts["entries"].count
 y = 0
 account_count.times do
-  account_1 = Account.new(
+  account1 = Account.new(
     account_name: "#{accounts["entries"][y]["account_name"]}",
     account_type: "#{accounts["entries"][y]["account_type"]}",
     account_number: "#{accounts["entries"][y]["account_number"]}",
     balance: "#{accounts["entries"][y]["balance"]}"
   )
-  account_1.user = User.first
-  account_1.save
+  account1.user = User.first
+  account1.save
   y += 1
 end
 puts "Account created"
 
-category_list = "db/category.json"
+category_list = "db/json/category.json"
 category_file = File.read(category_list)
 categories = JSON.parse(category_file)
 
-transaction_list = "db/transaction.json"
-transaction_file = File.read(transaction_list)
-transactions = JSON.parse(transaction_file)
-
 # income json
-income_transaction_list = "db/income.json"
+income_transaction_list = "db/json/income.json"
 income_transaction_file = File.read(income_transaction_list)
 income_transactions = JSON.parse(income_transaction_file)
 
 # eating out json
-eating_transaction_list = "db/eating.json"
+eating_transaction_list = "db/json/eating.json"
 eating_transaction_file = File.read(eating_transaction_list)
 eating_transactions = JSON.parse(eating_transaction_file)
 
 # grocery json
-grocery_transaction_list = "db/grocery.json"
+grocery_transaction_list = "db/json/grocery.json"
 grocery_transaction_file = File.read(grocery_transaction_list)
 grocery_transactions = JSON.parse(grocery_transaction_file)
 
 # shopping json
-shopping_transaction_list = "db/shopping.json"
+shopping_transaction_list = "db/json/shopping.json"
 shopping_transaction_file = File.read(shopping_transaction_list)
 shopping_transactions = JSON.parse(shopping_transaction_file)
 
 # transport json
-transport_transaction_list = "db/transport.json"
+transport_transaction_list = "db/json/transport.json"
 transport_transaction_file = File.read(transport_transaction_list)
-transport_transactions = JSON.parse(grocery_transaction_file)
+transport_transactions = JSON.parse(transport_transaction_file)
 
 # utility json
-utility_transaction_list = "db/utility.json"
+utility_transaction_list = "db/json/utility.json"
 utility_transaction_file = File.read(utility_transaction_list)
 utility_transactions = JSON.parse(utility_transaction_file)
 
@@ -114,20 +91,6 @@ eating_category = Category.create(name: "#{categories["entries"][3]["name"]}")
 utility_category = Category.create(name: "#{categories["entries"][4]["name"]}")
 income_category = Category.create(name: "#{categories["entries"][5]["name"]}")
 puts "creating categories"
-
-# transaction_count = transactions["entries"].count
-# j = 0
-# transaction_count.times do
-#   transaction1 = Transaction.new(
-#     name: "#{transactions["entries"][j]["name"]}",
-#     amount: "#{transactions["entries"][j]["amount"]}",
-#     date: "#{transactions["entries"][j]["date"]}"
-#   )
-#   transaction1.account = Account.last
-#   transaction1.category = Category.last
-#   transaction1.save
-#   j += 1
-# end
 
 # create income transactions
 income_count = income_transactions["entries"].count
@@ -166,9 +129,9 @@ grocery_count = grocery_transactions["entries"].count
 c = 0
 grocery_count.times do
   groc_transaction = Transaction.new(
-    name: "#{transactions["entries"][c]["name"]}",
-    amount: "#{transactions["entries"][c]["amount"]}",
-    date: "#{transactions["entries"][c]["date"]}"
+    name: "#{grocery_transactions["entries"][c]["name"]}",
+    amount: "#{grocery_transactions["entries"][c]["amount"]}",
+    date: "#{grocery_transactions["entries"][c]["date"]}"
   )
   groc_transaction.account = Account.last
   groc_transaction.category = grocery_category
@@ -182,13 +145,45 @@ shopping_count = shopping_transactions["entries"].count
 d = 0
 shopping_count.times do
   shop_transaction = Transaction.new(
-    name: "#{transactions["entries"][d]["name"]}",
-    amount: "#{transactions["entries"][d]["amount"]}",
-    date: "#{transactions["entries"][d]["date"]}"
+    name: "#{shopping_transactions["entries"][d]["name"]}",
+    amount: "#{shopping_transactions["entries"][d]["amount"]}",
+    date: "#{shopping_transactions["entries"][d]["date"]}"
   )
   shop_transaction.account = Account.last
   shop_transaction.category = shopping_category
   shop_transaction.save
-  c += 1
+  d += 1
 end
-puts "grocery transactions created"
+puts "shopping transactions created"
+
+# create transport transactions
+transport_count = transport_transactions["entries"].count
+e = 0
+transport_count.times do
+  transp_transaction = Transaction.new(
+    name: "#{transport_transactions["entries"][e]["name"]}",
+    amount: "#{transport_transactions["entries"][e]["amount"]}",
+    date: "#{transport_transactions["entries"][e]["date"]}"
+  )
+  transp_transaction.account = Account.last
+  transp_transaction.category = transport_category
+  transp_transaction.save
+  e += 1
+end
+puts "transport transactions created"
+
+# create utility transactions
+utility_count = utility_transactions["entries"].count
+f = 0
+utility_count.times do
+  utility_transaction = Transaction.new(
+    name: "#{utility_transactions["entries"][f]["name"]}",
+    amount: "#{utility_transactions["entries"][f]["amount"]}",
+    date: "#{utility_transactions["entries"][f]["date"]}"
+  )
+  utility_transaction.account = Account.last
+  utility_transaction.category = utility_category
+  utility_transaction.save
+  f += 1
+end
+puts "shopping transactions created"

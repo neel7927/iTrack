@@ -8,23 +8,23 @@
       },
       {
         "name": "Supercash",
-        "amount": 2500,
-        "date":  "2022-07-02"
+        "amount": 2400,
+        "date":  "2022-07-06"
       },
       {
         "name": "Intermart",
-        "amount": 2500,
-        "date":  "2022-06-02"
+        "amount": 5689,
+        "date":  "2022-07-04"
       },
       {
         "name": "Carrefour",
-        "amount": 2500,
-        "date":  "2022-06-02"
+        "amount": 756,
+        "date":  "2022-07-03"
       },
       {
         "name": "Jumbo",
-        "amount": 2500,
-        "date":  "2022-06-02"
+        "amount": 677,
+        "date":  "2022-07-05"
       }
 
   ]
