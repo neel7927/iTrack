@@ -9,7 +9,9 @@
     class: "form-control",
     placeholder: "Find a transaction"
   %>
+  <div class = "searchcenter">
   <%= submit_tag "Search", class: "btn btn-primary" %>
+  </div>
 <% end %>
 
 <!-- the list of transactions -->
@@ -22,7 +24,7 @@
       <div class = "transaction-history">
         <div class = "transac-hist">
           <div class="image-box">
-          <div class = "transaction-date"><%= transaction.date.strftime("%a %d %b %y") %></div>
+          <div class = "transaction-date"><%= transaction.date.strftime("%a %d") %></div>
           </div>
           <div class = "income"><%= transaction.name %></div>
           <div class = "amount-transact">Rs. <%= transaction.amount.round() %></div>
