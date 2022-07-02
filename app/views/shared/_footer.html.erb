@@ -21,8 +21,8 @@
           <ul id="footerMenu">
         <li>
           <ul class="dropupMenu" data-footer-target="dropup">
-            <li><a>Add an account</a></li>
-            <li><a>Add a budget</a></li>
+            <li><%= link_to "Add an account", new_account_path %></li>
+            <li><%= link_to "Add a budget", new_account_budget_path(@account) %></li>
           </ul>
         </li>
       </ul>
@@ -32,14 +32,19 @@
     </div>
   </div>
 
-  <div class="footer-icons" data-controller="footer">
-    <%= link_to "#" do %>
-      <i class="material-icons" data-action="click->footer#clickSearch">search</i>
+
+
+  <div class="footer-search">
+
+    <%= link_to account_transactions_path(@account) do %>
+      <i class="fa fa-search"></i>
     <% end %>
   </div>
 
+
+
   <div class="footer-icons">
-    <%= link_to  account_budgets_path(@account) do %>
+    <%= link_to account_budgets_path(@account) do %>
       <i class="fa fa-check-circle"></i>
     <% end %>
   </div>

@@ -30,14 +30,20 @@
   background: white;
   padding: 30px;
   justify-content: space-around;
+  align-items: left;
   color: black;
   font-weight: bold;
   margin-bottom: -16px;
-  align-items: center;
   font-size: 30px;
 }
 
+.footer-search{
 
+
+  margin-left: 5px;
+  margin-top: 1px;
+
+}
 
 
 // ---------------------- DROP UP MENU CSS ------------------
@@ -69,6 +75,7 @@ background: rgba(0, 0, 0, 0.1);
 #footerMenu li{
   color: black;
   background-color: white;
+
 }
 
 #footerMenu li ul.dropupMenu{
@@ -79,7 +86,7 @@ background: rgba(0, 0, 0, 0.1);
 .clickdropupMenu{
   display: block !important;
   position: absolute;
-  margin: 0 0 0 -15px;
+  margin: 0 0 0 -45px;
   border: 1px solid white;
   border-bottom: none;
   background: rgb(255, 255, 255);;
@@ -98,5 +105,3 @@ background: rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid pink;
   padding: 12px 10px 12px 10px;
 }
-
-// ------------------------

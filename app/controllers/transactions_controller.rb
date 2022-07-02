@@ -1,5 +1,14 @@
 class TransactionsController < ApplicationController
-  before_action :set_transaction, only: [:edit, :update]
+
+ before_action :set_transaction, only: [:edit, :update]
+
+  def index
+    if params[:query].present?
+      @transactions = Transaction.where("name ILIKE ?", "%#{params[:query]}%")
+    else
+      @transactions = Transaction.all
+    end
+  end
 
   def edit
   end
