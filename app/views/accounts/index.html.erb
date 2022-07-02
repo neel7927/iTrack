@@ -1,28 +1,29 @@
 <div class ="Account-Balance" >
-  <div class ="Account-logo">
-    <%= image_tag "mastercard.png", width: 50 %>
-    <h3> <%= current_user.account.account_name %> </h3>
-    <%number = current_user.account.account_number.to_s.chars.each_slice(4).map { |a| a.join.to_i }%>
-  </div>
+  <%= link_to account_path(current_user.account.id) do %>
+    <div class ="Account-logo">
+      <%= image_tag "mastercard.png", width: 50 %>
+      <h3> <%= current_user.account.account_name %> </h3>
+      <%number = current_user.account.account_number.to_s.chars.each_slice(4).map { |a| a.join.to_i }%>
+    </div>
 
-  <div class="card-number">
-    <% number.each do |num| %>
-      <%= num %>
+    <div class="card-number">
+      <% number.each do |num| %>
+        <%= num %>
       <% end %>
-  </div>
+    </div>
 
-  <div class="card-balance">
-  <% if current_user.account.balance.present? %>
-  <strong> Balance: Rs </strong> <%= (current_user.account.balance).round() %>
+    <div class="card-balance">
+      <% if current_user.account.balance.present? %>
+        <strong> Balance: Rs </strong> <%= (current_user.account.balance).round() %>
+      <% end %>
+    </div>
+    <h4 class = "account-name"> <%= current_user.name %> </h4>
   <% end %>
-  </div>
-  <h4 class = "account-name"> <%= current_user.name %> </h4>
-  </div>
 </div>
 
-<div class = "transaction">
-  <h3 class = "transac">Transactions</h3>
-</div>
+  <div class = "transaction">
+    <h3 class = "transac">Transactions</h3>
+  </div>
 
 <% @transactions.each do |transaction| %>
 
