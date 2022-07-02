@@ -13,7 +13,7 @@
 
   <div class="card-balance">
   <% if current_user.account.balance.present? %>
-  <strong> Balance: Rs </strong> <%= (current_user.account.balance).round() %>
+  <strong> Balance: <%= number_to_currency(current_user.account.balance, unit: "Rs ") %>
   <% end %>
   </div>
   <h4 class = "account-name"> <%= current_user.name %> </h4>
