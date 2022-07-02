@@ -8,7 +8,7 @@
     <canvas id="totalExpensesChart" data-controller="chart-js" data-labels="<%= @category_names %>" data-data="<%= @category_amounts %>" width="400" height="400"></canvas>
   </div>
 </div>
-
+<%= @features %>
 <div class="category-budgets">
   <div class="income-expense-tab">
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -23,7 +23,24 @@
       <div class="tab-pane fade show active" id="pills-income" role="tabpanel" aria-labelledby="pills-income-tab" tabindex="0">
         <div class="progress-card">
           <% @monthly_transactions.each do |transaction| %>
+          <% if transaction.category.name == "Income" %>
+            <div class = "transaction-history">
+              <div class = "transac-hist">
+                <div class="image-box">
+                <div class = "transaction-date"><%= transaction.date.strftime("%a %d %b %y") %></div>
+                </div>
+                <div class = "income"><%= transaction.name %></div>
+                <div class = "amount-transact">Rs. <%= transaction.amount.round() %></div>
 
+              </div>
+              <%= link_to root_path, class: "link" do %>
+              <div class="category-check">
+                <div class="cat-name"><%= transaction.category.name %></div>
+              </div>
+              <% end %>
+            </div>
+
+            <% end %>
           <% end %>
         </div>
       </div>
