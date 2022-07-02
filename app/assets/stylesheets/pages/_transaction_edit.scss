@@ -1,0 +1,18 @@
+.info {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+margin-top: 10%;
+padding-left: 10%;
+padding-top: 10%;
+align-items: center;
+}
+
+.btn-transac {
+  width: 200px;
+  background-color: #292D32;
+  color: #FCFCFC;
+  align-items: center;
+}
