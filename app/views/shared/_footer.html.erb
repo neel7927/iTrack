@@ -21,8 +21,8 @@
           <ul id="footerMenu">
         <li>
           <ul class="dropupMenu" data-footer-target="dropup">
-            <li><a>Add an account</a></li>
-            <li><a>Add a budget</a></li>
+            <li><%= link_to "Add an account", new_account_path %></li>
+            <li><%= link_to "Add a budget", new_account_budget_path(@account) %></li>
           </ul>
         </li>
       </ul>
