@@ -26,85 +26,129 @@ Account.destroy_all
 Category.destroy_all
 User.destroy_all
 
-user_list = "db/user.json"
-users_file = File.read(user_list)
-users = JSON.parse(users_file)
+user = User.create(
+  email: "test@abc.com",
+  password: "123456"
+)
+user.save
+puts user
 
-puts "Creating Users"
-user_count = users["entries"].count
-x = 0
-user_count.times do
-user1 = User.create(email: "#{users["entries"][x]["email"]}", password: "#{users["entries"][x]["password"]}", name: "#{users["entries"][x]["name"]}")
+account = Account.create(
+  account_name: "Savings",
+  account_type: "ajdfa",
+  account_number: 1234,
+  balance: 100.0
+)
+account.user = user
+account.save
+puts account
 
-  j = 0
-  photo_count = users["entries"][x]["photo"].count
-  photo_count.times do
-  photo = users["entries"][x]["photo"][j]
-  file = URI.open("#{photo}")
-  user1.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
-  j += 1
-  end
-  x += 1
-end
+category = Category.create(
+  name: "Shopping"
+)
+category.save
+puts category
+transaction = Transaction.create(
+  name: "Shoes",
+  amount: 1200,
+  date: Date.today
+)
+transaction.category = category
+transaction.account = account
+transaction.save
+puts transaction
 
-puts "Users created"
+budget = Budget.create(
+  amount: 1000
+)
+budget.category = category
+budget.account = account
+budget.save
+puts budget
 
-account_list = "db/account.json"
-accounts_file = File.read(account_list)
-accounts = JSON.parse(accounts_file)
 
-puts "creating Accounts"
-account_count = accounts["entries"].count
-y = 0
-account_count.times do
-  account_1 = Account.new(
-    account_name: "#{accounts["entries"][y]["account_name"]}",
-    account_type: "#{accounts["entries"][y]["account_type"]}",
-    account_number: "#{accounts["entries"][y]["account_number"]}",
-    balance: "#{accounts["entries"][y]["balance"]}"
-  )
-  account_1.user = User.first
-  account_1.save
-  y += 1
-end
-puts "Account created"
-category_list = "db/category.json"
-category_file = File.read(category_list)
-categories = JSON.parse(category_file)
 
-transaction_list = "db/transaction.json"
-transaction_file = File.read(transaction_list)
-transactions = JSON.parse(transaction_file)
+# user_list = "db/user.json"
+# users_file = File.read(user_list)
+# users = JSON.parse(users_file)
 
-puts "creating categories"
-category_count = categories["entries"].count
-i = 0
+# puts "Creating Users"
+# user_count = users["entries"].count
+# x = 0
+# user_count.times do
+#   user1 = User.create(id: "#{users["entries"][x]["id"]}",email: "#{users["entries"][x]["email"]}", password: "#{users["entries"][x]["password"]}")
+#   j = 0
+#   photo_count = users["entries"][x]["photo"].count
+#   photo_count.times do
+#   photo = users["entries"][x]["photo"][j]
+#   file = URI.open("#{photo}")
+#   user1.photo.attach(io: file, filename: "user.jpg",content_type: 'image/jpg')
+#   j += 1
+# end
+#   x += 1
+# end
 
-category_count.times do
+# puts "Users created"
 
-  category1 = Category.create(
-   name: "#{categories["entries"][i]["name"]}")
+# account_list = "db/account.json"
+# accounts_file = File.read(account_list)
+# accounts = JSON.parse(accounts_file)
 
-  i += 1
-end
-puts "Categories created"
+# puts "creating Accounts"
+# account_count = accounts["entries"].count
+# y = 0
+# account_count.times do
+#   account_1 = Account.create(
+#     id: "#{accounts["entries"][y]["id"]}",
+#     account_name: "#{accounts["entries"][y]["account_name"]}",
+#     account_type: "#{accounts["entries"][y]["account_type"]}",
+#     account_number: "#{accounts["entries"][y]["account_number"]}",
+#     balance: "#{accounts["entries"][y]["balance"]}",
+#     user_id: "#{accounts["entries"][y]["user_id"]}"
+#   )
+#   y += 1
+# end
+# puts "Account created"
+# category_list = "db/category.json"
+# category_file = File.read(category_list)
+# categories = JSON.parse(category_file)
 
-puts "creating transactions"
-transaction_count = transactions["entries"].count
-j = 0
+# transaction_list = "db/transaction.json"
+# transaction_file = File.read(transaction_list)
+# transactions = JSON.parse(transaction_file)
 
-transaction_count.times do
-  transaction1 = Transaction.new(
-    name: "#{transactions["entries"][j]["name"]}",
-    amount: "#{transactions["entries"][j]["amount"]}",
-    date: "#{transactions["entries"][j]["date"]}"
-  )
+# puts "creating categories"
+# category_count = categories["entries"].count
+# i = 0
 
-  transaction1.account = Account.last
-  transaction1.category = Category.last
-  transaction1.save
-  j += 1
+# # category_count.times do
+# #   category1 = Category.create(name: "#{categories["entries"][i]["name"]}")
+# #   puts "Created category"
+# #   i += 1
+# # end
+# category1 = Category.create(name: "#{categories["entries"][0]["name"]}")
+# puts "Categories created"
 
-end
+# puts "creating transactions"
+# transaction_count = transactions["entries"].count
+# j = 0
 
-puts "transaction created"
+# transaction_count.times do
+#   transaction1 = Transaction.create(
+#     name: "#{transactions["entries"][j]["name"]}",
+#     amount: "#{transactions["entries"][j]["amount"]}",
+#     date: "#{transactions["entries"][j]["date"]}",
+#     account_id: "#{transactions["entries"][j]["account_id"]}"
+#   )
+#   transaction1.category = category1
+#   transaction1.account =
+
+
+#   if transaction1.save
+#     puts transaction_count
+#     puts "Created transaction"
+#   end
+#   j += 1
+# end
+
+# puts "transaction created"

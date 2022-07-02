@@ -22,6 +22,17 @@ export default class extends Controller {
           hoverOffset: 4
         }]
       },
+      options: {
+        radius: 100,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          title: {
+              display: true,
+              text: JSON.parse(ctx.canvas.dataset.text),
+          }
+      }
+      }
     });
   }
 }
