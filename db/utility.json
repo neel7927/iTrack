@@ -1,0 +1,29 @@
+{
+  "entries": [
+    {
+      "name": "CWA",
+      "amount": 170,
+      "date":  "2022-06-01"
+    },
+    {
+      "name": "CEB",
+      "amount": 1500,
+      "date":  "2022-06-01"
+    },
+    {
+      "name": "Mauritius Telecom",
+      "amount": 1348,
+      "date":  "2022-06-01"
+    },
+    {
+      "name": "Emtel Airbox",
+      "amount": 949,
+      "date":  "2022-06-01"
+    },
+    {
+      "name": "Shell Gas",
+      "amount": 240,
+      "date":  "2022-06-01"
+    }
+  ]
+}

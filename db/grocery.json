@@ -1,0 +1,31 @@
+{
+  "entries": [
+
+      {
+        "name": "Intermart",
+        "amount": 2500,
+        "date":  "2022-07-02"
+      },
+      {
+        "name": "Supercash",
+        "amount": 2500,
+        "date":  "2022-07-02"
+      },
+      {
+        "name": "Intermart",
+        "amount": 2500,
+        "date":  "2022-06-02"
+      },
+      {
+        "name": "Carrefour",
+        "amount": 2500,
+        "date":  "2022-06-02"
+      },
+      {
+        "name": "Jumbo",
+        "amount": 2500,
+        "date":  "2022-06-02"
+      }
+
+  ]
+}
