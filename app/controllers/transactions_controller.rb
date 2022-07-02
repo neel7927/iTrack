@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
- 
+
  before_action :set_transaction, only: [:edit, :update]
 
   def index
@@ -24,5 +24,5 @@ class TransactionsController < ApplicationController
   def set_transaction
     @transaction = Transaction.find(params[:id])
   end
-  
+end
 end
