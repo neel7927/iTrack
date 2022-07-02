@@ -1,6 +1,7 @@
 <div class="footer">
-  <% if user_signed_in? %>
 
+  <% if user_signed_in? %>
+  <% @account = Account.find(current_user.account.id) %>
   <div class="footer-icons">
 
     <%= link_to accounts_path do %>
@@ -9,48 +10,46 @@
 
   </div>
 
-
-
   <div class="footer-icons">
-
     <%= link_to new_account_path do %>
       <i class="material-icons">account_balance_wallet</i>
     <% end %>
+  </div>
 
+  <div class="footer-icons" data-controller="footer">
+        <div style="margin-bottom: -26px;">
+          <ul id="footerMenu">
+        <li>
+          <ul class="dropupMenu" data-footer-target="dropup">
+            <li><a>Add an account</a></li>
+            <li><a>Add a budget</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <i class="material-icons" data-action="click->footer#clickdropupMenu">add_circle</i>
+    </div>
   </div>
 
 
-  <div class="footer-icons">
-      <% @account = Account.find(3) %>
-    <%= link_to new_account_budget_path(@account) do %>
-      <i class="material-icons">add_circle</i>
-    <% end %>
-
-  </div>
-
-
 
   <div class="footer-icons">
 
-    <%= link_to "#" do %>
+    <%= link_to account_transactions_path(@account) do %>
       <i class="material-icons">search</i>
     <% end %>
-
   </div>
+
 
 
   <div class="footer-icons">
-
-    <%= link_to "#" do %>
+    <%= link_to account_budgets_path(@account) do %>
       <i class="fa fa-check-circle"></i>
     <% end %>
-
   </div>
-
-
         <% else %>
           <footer hidden="hidden">
         <% end %>
     </div>
-
  </div>

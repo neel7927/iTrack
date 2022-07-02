@@ -1,26 +1,21 @@
 {
   "entries": [
     {
-      "id": 1,
       "name": "Transport"
     },
     {
-      "id":2,
       "name": "Shopping"
     },
     {
-      "id": 3,
       "name": "Grocery"
     },
     {
-      "id": 4,
       "name": "Eating Out"
     },
-    { "id": 5,
+    {
       "name": "Utility bill"
     },
     {
-      "id": 6,
       "name": "Income"
     }
   ]

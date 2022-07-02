@@ -1,22 +1,57 @@
-<div class ="balance">
-  <div class ="Account-Balance" >
-  <h3>Balance</h3>
-  <h1 class ="amount">Rs: 1000</h1>
-  <h4 class = "account-name">John Doe</h4>
+<div class ="Account-Balance" >
+  <div class ="Account-logo">
+    <%= image_tag "mastercard.png", width: 50 %>
+    <h3> <%= current_user.account.account_name %> </h3>
+    <%number = current_user.account.account_number.to_s.chars.each_slice(4).map { |a| a.join.to_i }%>
+  </div>
+
+  <div class="card-number">
+    <% number.each do |num| %>
+      <%= num %>
+      <% end %>
+  </div>
+
+  <div class="card-balance">
+  <% if current_user.account.balance.present? %>
+  <strong> Balance: Rs </strong> <%= (current_user.account.balance).round() %>
+  <% end %>
+  </div>
+  <h4 class = "account-name"> <%= current_user.name %> </h4>
   </div>
 </div>
 
 <div class = "transaction">
   <h3 class = "transac">Transactions</h3>
-  <h3 class= "details">View Details</h3>
 </div>
 
-<div class = "transaction-history">
-  <div class = "transac-hist">
-    <div class="image-box">
-      <%= image_tag("income.png",width: 30, height: 30)%>
-    </div>
-    <div  class = "income">Income</div>
-    <div class = "amount-transact">+ $700</div>
-  </div>
-</div>
+<% @transactions.each do |transaction| %>
+
+      <div class = "transaction-history">
+        <div class = "transac-hist">
+          <div class="image-box">
+            <% case transaction.category.name %>
+                        <% when "Transport" %>
+                          <%= image_tag("category/icons8-car-40.png",width: 30, height: 30) %>
+                        <% when "Shopping" %>
+                          <%= image_tag("category/icons8-shop-40.png",width: 30, height: 30) %>
+                        <% when "Grocery" %>
+                          <%= image_tag("category/icons8-vegetarian-food-40.png",width: 30, height: 30) %>
+                        <% when "Eating Out" %>
+                          <%= image_tag("category/icons8-food-40.png",width: 30, height: 30) %>
+                        <% when "Utility bill" %>
+                          <%= image_tag("category/icons8-lightning-bolt-40.png",width: 30, height: 30) %>
+                        <% when "Income" %>
+                          <%= image_tag("income.png",width: 30, height: 30) %>
+              <% end %>
+          </div>
+          <div class = "income"><%= transaction.name %></div>
+          <div class = "amount-transact">Rs. <%= transaction.amount.round() %></div>
+        </div>
+        <%= link_to edit_transaction_path(transaction), class: "link" do %>
+        <div class="category-check">
+          <div class="cat-name"><%= transaction.category.name %></div>
+        </div>
+        <% end %>
+      </div>
+
+<% end %>

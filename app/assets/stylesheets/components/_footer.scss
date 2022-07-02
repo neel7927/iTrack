@@ -1,3 +1,6 @@
+// ------------------ footer icons css -------------------
+
+
 .footer {
   background: white;
   display: flex;
@@ -5,7 +8,7 @@
   color: white;
   // width: 100%;
   margin-top: 20px;
-  position: sticky;
+  position: fixed;
   bottom: 0;
 }
 
@@ -37,3 +40,78 @@
   font-size: 30px;
 
 }
+
+
+
+
+// ---------------------- DROP UP MENU CSS ------------------
+
+
+#footer li ul{
+  list-style: none;
+  padding: 0px;
+  margin-bottom: 20px;
+}
+
+
+#footerMenu{
+margin: 0px;
+padding: 0px;
+width: auto;
+}
+
+
+#footerMenu li{
+list-style: none;
+float: left;
+font-size: 16px;
+padding: 12px 14px 12px 12px;
+color: rgb(217,217,217);
+border-right: 1px solid white;
+background: rgba(0, 0, 0, 0.1);
+
+}
+
+
+#footerMenu li{
+  color: black;
+  background-color: white;
+}
+
+
+
+#footerMenu li ul.dropupMenu{
+  display: none;
+
+}
+
+
+
+.clickdropupMenu{
+  display: block !important;
+  position: absolute;
+  margin: 0 0 0 -15px;
+  border: 1px solid white;
+  border-bottom: none;
+  background: rgb(255, 255, 255);;
+  z-index: 999;
+  bottom: 90px;
+
+  font-size: 35px;
+  padding-right: 15px;
+  padding-left: -5px;
+  }
+
+
+#footerMenu li{
+  float: none;
+  background-color: white;
+  border: none;
+  border-bottom: 1px solid pink;
+  padding: 12px 10px 12px 10px;
+}
+
+
+
+
+// ------------------------

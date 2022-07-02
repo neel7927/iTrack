@@ -1,0 +1,21 @@
+<div class = "amount">
+   <h3 class = "how">Choose your new Category</h3>
+</div>
+
+
+
+<div class = form>
+   <div class="info">
+    <h3><%= @transaction.name %></h3>
+    <h3>Rs.<%= @transaction.amount.round() %></h3>
+   </div>
+  <div class = "budget-form">
+    <%= simple_form_for [@transaction] do |f| %>
+      <%= f.input :category, collection: Category.all, label: "Category"%>
+      <div class = "button-submit-transaction">
+        <%= f.submit "Submit", class: "btn-transac" %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

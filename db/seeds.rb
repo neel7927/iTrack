@@ -21,6 +21,7 @@ require 'open-uri'
 require 'json'
 
 Transaction.destroy_all
+Budget.destroy_all
 Account.destroy_all
 Category.destroy_all
 User.destroy_all

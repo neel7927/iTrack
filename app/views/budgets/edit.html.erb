@@ -1,15 +1,12 @@
-<% @account = Account.find(params[:account_id]) %>
-<h2>Budget</h2>
-
 <div class = "amount">
-   <h3 class = "how">How much?</h3>
+   <h3 class = "how">How much for <%= @budget.category.name %>?</h3>
 </div>
 
+<% @account = Account.find(params[:account_id]) %>
 <div class = form>
   <div class = "budget-form">
     <%= simple_form_for [@account,@budget] do |f| %>
       <%= f.input :amount, label: "Amount", input_html: { class: "input" }, class: "input_amount"%>
-      <%= f.input :category, collection: Category.all, label: "Category", value_method: :id %>
       <div class = "button-submit">
         <%= f.submit "Submit", class: "btn-budget-new" %>
       </div>
