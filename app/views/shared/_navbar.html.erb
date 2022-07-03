@@ -5,7 +5,7 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <button class='navbar-toggler' type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class='navbar-toggler navbar-border' type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <!--<%= image_tag "logo-itrack.jpg", class: "navbar-toggler-icon"%>-->
         <%= cl_image_tag current_user.photo.key, class: "avatar-large dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       </button>
