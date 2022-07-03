@@ -1,6 +1,6 @@
 <div class="balance-card">
   <div class="container">
-  <% text = ["Account Balance = #{@account.balance}"] %>
+  <% text = ["Account Balance: #{@account.balance.round()}"] %>
     <div class="breakdown">
       <h2 class="text-center">Breakdown of expenses for the month of <em><%= Time.now.strftime("%B") %></em> per category</h2>
       <div class="chart">
@@ -24,7 +24,6 @@
     <div class="tab-pane fade show active" id="pills-income" role="tabpanel" aria-labelledby="pills-income-tab" tabindex="0">
       <% @monthly_transactions.each do |transaction| %>
         <% if transaction.category.name == "Income" %>
-
             <div class="transaction-type-card">
               <% case transaction.category.name %>
               <% when "Transport" %>
@@ -44,15 +43,14 @@
                 <p><small><%= transaction.name %></small></p>
                 <p>Rs. <strong><%= transaction.amount.round() %></strong></p>
               </div>
-
               <div class="transaction-actions">
                 <p><%= transaction.category.name %></p>
               </div>
             </div>
         <% end %>
       <% end %>
-
     </div>
+
     <div class="tab-pane fade" id="pills-expense" role="tabpanel" aria-labelledby="pills-expense-tab" tabindex="0">
       <% @monthly_transactions.each do |transaction| %>
         <% unless transaction.category.name == "Income" %>

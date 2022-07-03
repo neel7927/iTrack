@@ -1,0 +1,24 @@
+{
+  "entries": [
+    {
+      "name": "Transport",
+      "amount": 150,
+      "date":  "2022-07-01"
+    },
+    {
+      "name": "MoTaxi",
+      "amount": 150,
+      "date":  "2022-07-02"
+    },
+    {
+      "name": "Yugo",
+      "amount": 150,
+      "date":  "2022-07-03"
+    },
+    {
+      "name": "Yugo",
+      "amount": 400,
+      "date":  "2022-07-04"
+    }
+  ]
+}

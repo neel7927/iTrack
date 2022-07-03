@@ -25,13 +25,10 @@
   color: black;
   font-weight: 400;
   align-items: center;
-
-
 }
 
 
 .fa {
-
   background: white;
   // justify-content: space-around;
   align-items: left;
@@ -42,7 +39,6 @@
   margin-right: -22px;
   padding: 25px;
   // border: none;
-
 }
 
 .footer-search{
@@ -55,8 +51,6 @@
 
 
 // ---------------------- DROP UP MENU CSS ------------------
-
-
 #footer li ul{
   list-style: none;
   padding: 0px;
@@ -82,21 +76,16 @@ background: rgba(0, 0, 0, 0.1);
 
 }
 
-
 #footerMenu li{
   color: black;
   background-color: white;
 
 }
 
-
-
 #footerMenu li ul.dropupMenu{
   display: none;
 
 }
-
-
 
 .clickdropupMenu{
   display: block !important;
@@ -113,19 +102,10 @@ background: rgba(0, 0, 0, 0.1);
   padding-left: -5px;
   }
 
-
 #footerMenu li{
   float: none;
   background-color: white;
   border: none;
   border-bottom: 1px solid pink;
   padding: 12px 10px 12px 10px;
-  font-size: 15px;
-
-  a{
-    text-decoration: none;
-    color: black;
-
-  }
-
 }
