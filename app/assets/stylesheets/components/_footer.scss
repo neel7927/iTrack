@@ -10,6 +10,8 @@
   margin-top: 20px;
   position: fixed;
   bottom: 0;
+  padding-right: 32px;
+
 }
 
 .material-icons {
@@ -31,14 +33,15 @@
 .fa {
 
   background: white;
-  padding: 30px;
-  justify-content: space-around;
+  // justify-content: space-around;
   align-items: left;
   color: black;
   font-weight: bold;
   margin-bottom: -16px;
   font-size: 30px;
   margin-right: -22px;
+  padding: 25px;
+  // border: none;
 
 }
 
