@@ -1,3 +1,4 @@
+require 'faker'
 require 'open-uri'
 require 'json'
 
@@ -15,16 +16,17 @@ puts "Creating Users"
 user_count = users["entries"].count
 x = 0
 user_count.times do
-user1 = User.create(email: "#{users["entries"][x]["email"]}", password: "#{users["entries"][x]["password"]}", name: "#{users["entries"][x]["name"]}")
-    j = 0
-    photo_count = users["entries"][x]["photo"].count
-    photo_count.times do
-    photo = users["entries"][x]["photo"][j]
-    file = URI.open("#{photo}")
-    user1.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
-    j += 1
-    end
-    x += 1
+  user1 = User.new(email: "#{users["entries"][x]["email"]}", password: "#{users["entries"][x]["password"]}", name: "#{users["entries"][x]["name"]}")
+  j = 0
+  photo_count = users["entries"][x]["photo"].count
+  photo_count.times do
+  photo = users["entries"][x]["photo"][j]
+  file = URI.open("#{photo}")
+  user1.photo.attach(io: file, filename: "user.jpg", content_type: 'image/jpg')
+  j += 1
+  end
+  user1.save
+  x += 1
 end
 puts "Users created"
 
@@ -52,10 +54,66 @@ category_list = "db/json/category.json"
 category_file = File.read(category_list)
 categories = JSON.parse(category_file)
 
+# create categories
+puts "creating categories"
+transport_category = Category.new(name: "#{categories["entries"][0]["name"]}")
+shopping_category = Category.create(name: "#{categories["entries"][1]["name"]}")
+grocery_category = Category.create(name: "#{categories["entries"][2]["name"]}")
+eating_category = Category.create(name: "#{categories["entries"][3]["name"]}")
+utility_category = Category.create(name: "#{categories["entries"][4]["name"]}")
+income_category = Category.create(name: "#{categories["entries"][5]["name"]}")
+puts "creating categories"
+
+
+budget = Budget.create(
+  amount: 1000
+)
+budget.category = shopping_category
+budget.account = Account.first
+budget.save
+puts budget
+
+# utility json
+utility_transaction_list = "db/json/utility.json"
+utility_transaction_file = File.read(utility_transaction_list)
+utility_transactions = JSON.parse(utility_transaction_file)
+
+# create utility transactions
+utility_count = utility_transactions["entries"].count
+f = 0
+utility_count.times do
+  utility_transaction = Transaction.new(
+    name: "#{utility_transactions["entries"][f]["name"]}",
+    amount: "#{utility_transactions["entries"][f]["amount"]}",
+    date: "#{utility_transactions["entries"][f]["date"]}"
+  )
+  utility_transaction.account = Account.first
+  utility_transaction.category = utility_category
+  utility_transaction.save
+  f += 1
+end
+puts "shopping transactions created"
+
 # income json
 income_transaction_list = "db/json/income.json"
 income_transaction_file = File.read(income_transaction_list)
 income_transactions = JSON.parse(income_transaction_file)
+
+# create income transactions
+income_count = income_transactions["entries"].count
+a = 0
+income_count.times do
+  inc_transaction = Transaction.create(
+    name: "#{income_transactions["entries"][a]["name"]}",
+    amount: "#{income_transactions["entries"][a]["amount"]}",
+    date: "#{income_transactions["entries"][a]["date"]}"
+  )
+  inc_transaction.account = Account.first
+  inc_transaction.category = income_category
+  inc_transaction.save
+  a += 1
+end
+puts "income transactions created"
 
 # eating out json
 eating_transaction_list = "db/json/eating.json"
@@ -76,37 +134,6 @@ shopping_transactions = JSON.parse(shopping_transaction_file)
 transport_transaction_list = "db/json/transport.json"
 transport_transaction_file = File.read(transport_transaction_list)
 transport_transactions = JSON.parse(transport_transaction_file)
-
-# utility json
-utility_transaction_list = "db/json/utility.json"
-utility_transaction_file = File.read(utility_transaction_list)
-utility_transactions = JSON.parse(utility_transaction_file)
-
-# create categories
-puts "creating categories"
-transport_category = Category.create(name: "#{categories["entries"][0]["name"]}")
-shopping_category = Category.create(name: "#{categories["entries"][1]["name"]}")
-grocery_category = Category.create(name: "#{categories["entries"][2]["name"]}")
-eating_category = Category.create(name: "#{categories["entries"][3]["name"]}")
-utility_category = Category.create(name: "#{categories["entries"][4]["name"]}")
-income_category = Category.create(name: "#{categories["entries"][5]["name"]}")
-puts "creating categories"
-
-# create income transactions
-income_count = income_transactions["entries"].count
-a = 0
-income_count.times do
-  inc_transaction = Transaction.new(
-    name: "#{income_transactions["entries"][a]["name"]}",
-    amount: "#{income_transactions["entries"][a]["amount"]}",
-    date: "#{income_transactions["entries"][a]["date"]}"
-  )
-  inc_transaction.account = Account.last
-  inc_transaction.category = income_category
-  inc_transaction.save
-  a += 1
-end
-puts "income transactions created"
 
 # create eating transactions
 eating_count = eating_transactions["entries"].count
@@ -171,19 +198,3 @@ transport_count.times do
   e += 1
 end
 puts "transport transactions created"
-
-# create utility transactions
-utility_count = utility_transactions["entries"].count
-f = 0
-utility_count.times do
-  utility_transaction = Transaction.new(
-    name: "#{utility_transactions["entries"][f]["name"]}",
-    amount: "#{utility_transactions["entries"][f]["amount"]}",
-    date: "#{utility_transactions["entries"][f]["date"]}"
-  )
-  utility_transaction.account = Account.last
-  utility_transaction.category = utility_category
-  utility_transaction.save
-  f += 1
-end
-puts "shopping transactions created"
