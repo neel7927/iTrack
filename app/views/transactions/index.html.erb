@@ -1,40 +1,47 @@
-
-<p> Search for a transaction</p>
-
+<div class = "search-transaction-title">
+    <p> Search for a transaction</p>
+</div>
 
 <!-- [...] -->
+<div class = "search-tr-indexpage">
 <%= form_tag account_transactions_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Find a transaction"
   %>
-  <div class = "searchcenter">
+  <div class = "searchcenter-tr-index-pg">
   <%= submit_tag "Search", class: "btn btn-primary" %>
   </div>
 <% end %>
+</div>
 
 <!-- the list of transactions -->
 
 
-<div class = "space-div">
+<div class = "space-div1-tr-index-pg">
 </div>
 <% @transactions.each do |transaction| %>
 
-      <div class = "transaction-history">
-        <div class = "transac-hist">
-          <div class="image-box">
-          <div class = "transaction-date"><%= transaction.date.strftime("%a %d") %></div>
+      <div class = "transaction-history-tr-index-pg">
+        <div class = "transac-hist-tr-index-pg">
+          <div class="transaction-datebox-tr-index-pg">
+          <div class = "transaction-date-tr-index-pg"><%= transaction.date.strftime("%a %d") %></div>
           </div>
-          <div class = "income"><%= transaction.name %></div>
-          <div class = "amount-transact">Rs. <%= transaction.amount.round() %></div>
+          <div class = "income-tr-index-pg"><%= transaction.name %></div>
+          <div class = "amount-transact-tr-index-pg">Rs. <%= transaction.amount.round() %></div>
 
         </div>
-        <%= link_to root_path, class: "link" do %>
-        <div class="category-check">
-          <div class="cat-name"><%= transaction.category.name %></div>
+
+        <%= link_to edit_transaction_path(transaction), class: "link" do %>
+        <div class="category-check-tr-index-pg">
+          <div class="cat-name-tr-index-pg"><%= transaction.category.name %></div>
         </div>
         <% end %>
       </div>
 
 <% end %>
+    </div>
+
+<div class = "space-div2-tr-index-pg">
+</div>
