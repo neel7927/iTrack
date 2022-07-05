@@ -10,13 +10,4 @@ export default class extends Controller {
 
     }
 
-    clickSearch(event) {
-      event.preventDefault();
-      document.querySelector(".search-div").classList.toggle("hide");
-      console.log(document.querySelector(".search-div").classList);
-      // this.dropsearchTarget.classList.toggle("clickSearch")
-
-    }
-
-
   };

@@ -1,18 +1,20 @@
+
 <div class="footer">
 
   <% if user_signed_in? %>
   <% @account = Account.find(current_user.account.id) %>
+
   <div class="footer-icons">
 
     <%= link_to accounts_path do %>
-      <i class="material-icons">home</i>
+      <i class="fa fa-home"></i>
     <% end %>
 
   </div>
 
   <div class="footer-icons">
     <%= link_to new_account_path do %>
-      <i class="material-icons">account_balance_wallet</i>
+      <i class="fa fa-wallet"></i>
     <% end %>
   </div>
 
@@ -22,19 +24,19 @@
         <li>
           <ul class="dropupMenu" data-footer-target="dropup">
             <li><%= link_to "Add an account", new_account_path %></li>
-            <li><%= link_to "Add a budget", new_account_budget_path(@account) %></li>
+            <li class="secondlimod"><%= link_to "Add a budget", new_account_budget_path(@account) %></li>
           </ul>
         </li>
       </ul>
     </div>
     <div>
-      <i class="material-icons" data-action="click->footer#clickdropupMenu">add_circle</i>
+      <i class="fa fa-plus-circle" data-action="click->footer#clickdropupMenu"></i>
     </div>
   </div>
 
 
 
-  <div class="footer-search">
+  <div class="footer-icons">
 
     <%= link_to account_transactions_path(@account) do %>
       <i class="fa fa-search"></i>
