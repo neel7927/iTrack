@@ -60,6 +60,7 @@ class AccountsController < ApplicationController
   def category_features(categories, transactions, budgets)
     category_features = []
     categories.each do |category|
+      category_budget = 0
       categories_amount = 0
       transactions.each do |transaction|
         if transaction.category_id == category.id
@@ -67,13 +68,9 @@ class AccountsController < ApplicationController
         end
       end
       budgets.each do |budget|
-        if budget.category_id == category.id
-          category_budget = budget.amount
-        else
-          category_budget = 0
-        end
-        category_features << { name: category.name, amount: categories_amount, budget: category_budget }
+        category_budget = budget.amount if budget.category_id == category.id
       end
+      category_features << { name: category.name, amount: categories_amount, budget: category_budget }
     end
     category_features
   end
