@@ -1,6 +1,6 @@
 <div class="balance-card">
   <div class="container">
-  <% text = ["Account Balance: #{@account.balance.round()}"] %>
+  <% text = ["Account Balance: Rs #{@account.balance.round()}"] %>
     <div class="breakdown">
       <h2 class="text-center">Breakdown of expenses for the month of <em><%= Time.now.strftime("%B") %></em> per category</h2>
       <div class="chart">
