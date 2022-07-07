@@ -36,7 +36,7 @@
 
 .Account-Balance .account-name {
   color: #F2F2F2 ;
-  padding-left: 55%;
+  padding-left: 40%;
   padding-top: 5%;
   font-size: medium;
   padding-right: 1%;
@@ -65,7 +65,7 @@
 
 .transac {
   font-size: 20px;
-  font-weight: bolder;
+  font-weight: bold;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -104,24 +104,26 @@
  .image-box {
   width: 15%;
   text-align: center;
-  padding-top: 15%;
+  padding-top: 10%;
   padding-left: 2.5%;
  }
 
  .income {
    font-size: 18px;
    align-items: center;
-   padding-top: 15%;
-   padding-left: 0%;
+   padding-top: 5%;
+   padding-left: 2%;
    padding-right: 23%;
    font-family: 'Open Sans';
    font-weight: bold;
-   overflow: hidden;
+   overflow:hidden;
    white-space: nowrap;
+   text-overflow: clip;
+  //  width: max-content;
  }
 
  .amount-transact {
-   padding-top: 15%;
+   padding-top: 5%;
    padding-left: 12%;
    font-size: 15px;
    color: #34B578;
@@ -133,8 +135,8 @@
  }
 
  .category-check {
-  padding-left: 20%;
-  margin-top: 4%;
+  padding-left: 18%;
+  margin-top: 2%;
   align-items: flex-start;
  }
 

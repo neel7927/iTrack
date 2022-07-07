@@ -47,7 +47,7 @@
                 <% end %>
             </div>
             <div class = "income"><%= transaction.name %></div>
-            <div class = "amount-transact"><%= number_to_currency(transaction.amount, unit: "Rs ") %></div>
+            <div class = "amount-transact"><%= number_to_currency(transaction.amount,unit: "Rs ")%></div>
           </div>
           <%= link_to edit_transaction_path(transaction), class: "link" do %>
           <div class="category-check">
