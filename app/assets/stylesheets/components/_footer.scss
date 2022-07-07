@@ -6,48 +6,49 @@
   display: flex;
   align-items: center;
   color: white;
-  // width: 100%;
   margin-top: 20px;
   position: fixed;
-  bottom: 0;
-  padding-right: 32px;
+  bottom: -1px;
+  width: 100%;
+  padding-bottom: 2px;
 
-}
 
-.material-icons {
-
-  background: white;
-  padding: 35px;
-  display: inline-block;
-  font-size: 38px;
-  justify-content: space-around;
-  margin-bottom: 20px;
-  color: black;
-  font-weight: 400;
-  align-items: center;
 }
 
 
 .fa {
   background: white;
-  // justify-content: space-around;
-  align-items: left;
   color: black;
-  font-weight: bold;
-  margin-bottom: -16px;
+  margin-bottom: -4px;
   font-size: 30px;
-  margin-right: -22px;
-  padding: 25px;
-  // border: none;
+  padding: 20px;
+  display: inline-block;
+
+
 }
 
-.footer-search{
 
+.fa-search{
+  padding-left: 26px;
+}
 
-  margin-left: 5px;
-  margin-top: 1px;
+.fa-check-circle{
+  padding-left: 18px;
 
 }
+
+.fa-plus-circle{
+  padding-left: 29px;
+}
+
+
+.fa-wallet{
+
+  padding-left: 26px;
+}
+
+
+
 
 
 // ---------------------- DROP UP MENU CSS ------------------
@@ -90,22 +91,42 @@ background: rgba(0, 0, 0, 0.1);
 .clickdropupMenu{
   display: block !important;
   position: absolute;
+  font-weight: bold;
   margin: 0 0 0 -45px;
   border: 1px solid white;
   border-bottom: none;
   background: rgb(255, 255, 255);;
   z-index: 999;
-  bottom: 90px;
+  bottom: 66px;
+
 
   font-size: 35px;
-  padding-right: 15px;
-  padding-left: -5px;
+  padding-right: 9px;
+  padding-left: 9px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+
+
   }
 
 #footerMenu li{
   float: none;
   background-color: white;
-  border: none;
-  border-bottom: 1px solid pink;
+
+  border-bottom: 1px solid #292D32;
   padding: 12px 10px 12px 10px;
+
+
+
+
+
+  .secondlimod {
+
+    border-bottom: 1px solid white;
+  }
+
+
 }

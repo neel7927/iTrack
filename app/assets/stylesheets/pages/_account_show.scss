@@ -19,6 +19,12 @@
 .nav-pills .nav-link {
   color: #555;
 }
+
+.nav-pills .nav-link.active {
+  color: #fff;
+  background-color: black;
+}
+
 .text-uppercase {
   letter-spacing: 0.1em;
 }
@@ -42,7 +48,7 @@
 
 .chart {
   width: 250px;
-  height: 275px;
+  height: 310px;
   margin-left: auto;
   margin-right: auto;
 }

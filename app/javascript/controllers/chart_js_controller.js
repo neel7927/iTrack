@@ -5,7 +5,7 @@ export default class extends Controller {
   connect() {
     const ctx = this.element.getContext("2d");
     new Chart(ctx, {
-      type: 'doughnut',
+      type: 'pie',
       data: {
         labels: JSON.parse(ctx.canvas.dataset.labels),
         datasets: [{
