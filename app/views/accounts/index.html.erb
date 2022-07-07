@@ -26,28 +26,28 @@
     <h3 class = "transac">Transactions</h3>
   </div>
 
-  <% @transactions.first(5).each do |transaction| %>
+  <% @transactions.first(10).each do |transaction| %>
 
         <div class = "transaction-history">
           <div class = "transac-hist">
             <div class="image-box">
               <% case transaction.category.name %>
                           <% when "Transport" %>
-                            <%= image_tag("category/icons8-car-40.png",width: 30, height: 30) %>
+                            <%= image_tag("category/icons8-car-40.png",width: 25, height: 25) %>
                           <% when "Shopping" %>
-                            <%= image_tag("category/icons8-shop-40.png",width: 30, height: 30) %>
+                            <%= image_tag("category/icons8-shop-40.png",width: 25, height: 25) %>
                           <% when "Grocery" %>
-                            <%= image_tag("category/icons8-vegetarian-food-40.png",width: 30, height: 30) %>
+                            <%= image_tag("category/icons8-vegetarian-food-40.png",width: 25, height: 25) %>
                           <% when "Eating Out" %>
-                            <%= image_tag("category/icons8-food-40.png",width: 30, height: 30) %>
+                            <%= image_tag("category/icons8-food-40.png",width: 25, height: 25) %>
                           <% when "Utility bill" %>
-                            <%= image_tag("category/icons8-lightning-bolt-40.png",width: 30, height: 30) %>
+                            <%= image_tag("category/icons8-lightning-bolt-40.png",width: 25, height: 25) %>
                           <% when "Income" %>
-                            <%= image_tag("income.png",width: 30, height: 30) %>
+                            <%= image_tag("income.png",width: 25, height: 25) %>
                 <% end %>
             </div>
             <div class = "income"><%= transaction.name %></div>
-            <div class = "amount-transact">Rs. <%= transaction.amount.round() %></div>
+            <div class = "amount-transact"><%= number_to_currency(transaction.amount,unit: "Rs ")%></div>
           </div>
           <%= link_to edit_transaction_path(transaction), class: "link" do %>
           <div class="category-check">

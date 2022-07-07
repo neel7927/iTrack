@@ -17,8 +17,13 @@
     },
     {
       "name": "Renaissance Shop",
-      "amount": 450,
+      "amount": 2000,
       "date":  "2022-07-04"
+    },
+    {
+      "name": "Made in Moris",
+      "amount": 360,
+      "date":  "2022-07-06"
     }
   ]
 }

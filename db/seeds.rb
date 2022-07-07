@@ -144,7 +144,7 @@ eating_count.times do
     amount: "#{eating_transactions["entries"][b]["amount"]}",
     date: "#{eating_transactions["entries"][b]["date"]}"
   )
-  eat_transaction.account = Account.last
+  eat_transaction.account = Account.first
   eat_transaction.category = eating_category
   eat_transaction.save
   b += 1
@@ -160,7 +160,7 @@ grocery_count.times do
     amount: "#{grocery_transactions["entries"][c]["amount"]}",
     date: "#{grocery_transactions["entries"][c]["date"]}"
   )
-  groc_transaction.account = Account.last
+  groc_transaction.account = Account.first
   groc_transaction.category = grocery_category
   groc_transaction.save
   c += 1
@@ -176,7 +176,7 @@ shopping_count.times do
     amount: "#{shopping_transactions["entries"][d]["amount"]}",
     date: "#{shopping_transactions["entries"][d]["date"]}"
   )
-  shop_transaction.account = Account.last
+  shop_transaction.account = Account.first
   shop_transaction.category = shopping_category
   shop_transaction.save
   d += 1
@@ -192,7 +192,7 @@ transport_count.times do
     amount: "#{transport_transactions["entries"][e]["amount"]}",
     date: "#{transport_transactions["entries"][e]["date"]}"
   )
-  transp_transaction.account = Account.last
+  transp_transaction.account = Account.first
   transp_transaction.category = transport_category
   transp_transaction.save
   e += 1
