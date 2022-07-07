@@ -1,10 +1,10 @@
 
 
 
-  p{
+  .search-transaction-title{
     color: #292D32;
     font-size: 10px bold;
-    margin-top: 10px;
+    margin-top: 13px;
     margin-left: 65px;
 
 
@@ -24,80 +24,50 @@
 
   }
 
-  .searchcenter{
+
+
+
+  .searchcenter-tr-index-pg{
     width: 150px;
     padding-top: 20px;
     padding-left: 30px;
 
+
+
+  .btn-primary {
+    background-color: #292D32;
+    border-radius: 18px;
+    color: #B2AFAF;
+    border-color: black;
   }
 
+
+
+  }
+
+
+
+
+
+
   .form-control:focus {
-    border: 1px solid #1EDD88;
+    border: 1px solid #080A0B;
     outline: none !important;
     box-shadow: 0 2px 6px rgba(87, 12, 226, 0.08);
   }
 
-  .btn-primary {
-    background-color: #080A0B;
-  }
 
 
 
 
-
-// .transactions {
-//   display: grid;
-//   grid-template-columns: repeat(4, 1fr);
-//   grid-template-rows: 1fr;
-//   grid-column-gap: 0px;
-//   grid-row-gap: 0px;
-//   border: green bold;
+// // transaction view details link
 
 
-// }
-
-
-// space div
-
-
-
-
-// --->
-
-
-
-// transaction view details link
-.transaction {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 20px;
-  grid-row-gap: 0px;
-  padding-left: 5%;
-  padding-top: 10%;
-  align-items: flex-end;
-  padding-right: 5%;
-  margin-bottom: 5%;
-}
-
-.transac {
-  font-size: 20px;
-  font-weight: bolder;
-  font-family: 'Open Sans', sans-serif;
-}
-
-// .details {
-//   font-size: 15px;
-//   padding-right: 0%;
-//   text-align: right;
-//   color: #00A3FF;
-// }
-
-.transaction-history {
+.transaction-history-tr-index-pg {
   width: 100%;
-  height: 125px;
+  height: 80px;
   background-color: #FAFAFA;
-box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 10px;
   // box-shadow: 0px 10px 10px #dcdcdd;
   padding-top: 0%;
@@ -107,10 +77,10 @@ box-shadow: 0 0 15px rgba(0,0,0,0.2);
   // padding-right: 60px;
   margin: auto;
   justify-content: center;
-  margin-bottom: 2.5%;
+  margin-bottom: 20px;
  }
 
- .transac-hist {
+ .transac-hist-tr-index-pg {
   margin: auto;
   width: 100%;
   height: 50%;
@@ -119,7 +89,7 @@ box-shadow: 0 0 15px rgba(0,0,0,0.2);
   align-items: center;
  }
 
- .image-box {
+ .transaction-datebox-tr-index-pg {
   width: 15%;
   text-align: center;
   padding-top: 15%;
@@ -132,23 +102,26 @@ box-shadow: 0 0 15px rgba(0,0,0,0.2);
 
 // this is for "Nandos"
 
- .income {
+ .income-tr-index-pg {
 
-   padding-top: 15%;
+   padding-top: 3%;
    padding-right: 60px;
-   margin-right: 20px;
-   padding-left: 40px;
+   margin-right: -53px;
+   padding-left: 10px;
    white-space: nowrap;
    overflow: hidden;
    text-overflow: clip;
    font-size: 15px bold;
+   display: inline-block;
+
+  //  clear: both;
 
  }
 
 
  // THIS IS FOR THE DATE
 
- .transaction-date {
+ .transaction-date-tr-index-pg {
 
 
   font-size: 15px;
@@ -157,7 +130,7 @@ box-shadow: 0 0 15px rgba(0,0,0,0.2);
   font-weight: bold;
   display: flex;
   margin-left: 11px;
-  padding-top: 30px;
+  padding-bottom: 10px;
 
 
 
@@ -168,37 +141,57 @@ box-shadow: 0 0 15px rgba(0,0,0,0.2);
  // this is for "RS 250" --> amount
 
 
- .amount-transact {
+ .amount-transact-tr-index-pg {
    font-size: 15px;
    color: #34B578;
    font-family: 'Open Sans', sans-serif;
    font-weight: bold;
    padding-right: 30px;
-
-
+   margin-right: -4px;
 
 
    white-space: nowrap;
    overflow: hidden;
    text-overflow: clip;
-   font-size: 15px bold;
+   padding-top: 22%;
 
 
  }
 
 //  this is for the income/ link tag
 
- .category-check {
-  margin-top: 20px;
-  align-items: flex-start;
-
-
-  padding-left: 88px;
+ .category-check-tr-index-pg {
+  margin-top: 7px;
   color: #292D32;
+  font-weight: bold;
+  padding-left: 130px;
 
- }
 
  .link {
   text-decoration: none;
   color: #292D32;
  }
+
+
+ }
+
+
+
+// space div
+
+
+
+
+ .space-div1-tr-index-pg{
+  margin-bottom: 34px;
+ }
+
+
+
+ .space-div2-tr-index-pg{
+  margin-bottom: 105px;
+ }
+
+
+
+ //

@@ -1,7 +1,38 @@
+
 <div class="footer">
 
   <% if user_signed_in? %>
-    <% @account = Account.find(current_user.account.id) %>
+  <% @account = Account.find(current_user.account.id) %>
+
+  <div class="footer-icons">
+
+    <%= link_to accounts_path do %>
+      <i class="fa fa-home"></i>
+    <% end %>
+
+  </div>
+
+  <div class="footer-icons">
+    <%= link_to new_account_path do %>
+      <i class="fa fa-wallet"></i>
+    <% end %>
+  </div>
+
+  <div class="footer-icons" data-controller="footer">
+        <div style="margin-bottom: -26px;">
+          <ul id="footerMenu">
+        <li>
+          <ul class="dropupMenu" data-footer-target="dropup">
+            <li><%= link_to "Add an account", new_account_path %></li>
+            <li class="secondlimod"><%= link_to "Add a budget", new_account_budget_path(@account) %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <i class="fa fa-plus-circle" data-action="click->footer#clickdropupMenu"></i>
+    </div>
+  </div>
 
     <div class="footer-icons">
       <%= link_to accounts_path do %>
@@ -15,6 +46,7 @@
       <% end %>
     </div>
 
+<<<<<<< HEAD
     <div class="footer-icons" data-controller="footer">
       <div style="margin-bottom: -26px;">
         <ul id="footerMenu">
@@ -31,6 +63,9 @@
         <i class="material-icons" data-action="click->footer#clickdropupMenu">add_circle</i>
       </div>
     </div>
+=======
+  <div class="footer-icons">
+>>>>>>> master
 
     <div class="footer-search">
       <%= link_to account_transactions_path(@account) do %>
